@@ -9,9 +9,11 @@ from typing import Any
 
 import streamlit as st
 
+from crypto.ecc_keywrap import generate_keys
 from pipeline.encrypt import encrypt_image_adaptive
 
 ENCRYPT_RESULT_KEY = "encrypt_result"
+GENERATED_X25519_KEYPAIR_KEY = "generated_x25519_keypair"
 
 
 def _save_uploaded_image(uploaded_file: Any) -> str:
@@ -51,6 +53,17 @@ def _resolve_pem_input(text_value: str, uploaded_file: Any | None) -> bytes | No
         return candidate.read_bytes()
 
     return stripped.encode("utf-8")
+
+
+def _generated_x25519_keypair() -> dict[str, bytes] | None:
+    value = st.session_state.get(GENERATED_X25519_KEYPAIR_KEY)
+    if not isinstance(value, dict):
+        return None
+    private_pem = value.get("private_pem")
+    public_pem = value.get("public_pem")
+    if not isinstance(private_pem, bytes) or not isinstance(public_pem, bytes):
+        return None
+    return value
 
 
 def _render_encrypt_result(result: dict[str, Any]) -> None:
@@ -107,7 +120,9 @@ def main() -> None:
             ["Passphrase only", "X25519 only", "Hybrid (Passphrase + X25519)"],
             index=0,
         )
-        passphrase = st.text_input("Passphrase", type="password", help="Optional when X25519-only mode is used.")
+        passphrase = ""
+        if key_mode != "X25519 only":
+            passphrase = st.text_input("Passphrase", type="password")
         recipient_public_key_pem_text = ""
         recipient_public_key_pem_file = None
         if key_mode != "Passphrase only":
@@ -121,6 +136,31 @@ def main() -> None:
                 type=["pem"],
                 accept_multiple_files=False,
             )
+            st.caption("No key pair yet? Generate one here and download the private key for decryption later.")
+            if st.button("Generate random X25519 key pair", use_container_width=True):
+                private_pem, public_pem = generate_keys()
+                st.session_state[GENERATED_X25519_KEYPAIR_KEY] = {
+                    "private_pem": private_pem,
+                    "public_pem": public_pem,
+                }
+
+            generated_keypair = _generated_x25519_keypair()
+            if generated_keypair is not None:
+                st.success("Generated X25519 key pair is ready for this session.")
+                st.caption("The generated public key is used automatically unless you paste or upload a different public key.")
+                st.caption("Download and keep the private key safe. You will need it in the decrypt UI.")
+                st.download_button(
+                    "Download generated public key",
+                    data=generated_keypair["public_pem"],
+                    file_name="x25519_public.pem",
+                    mime="application/x-pem-file",
+                )
+                st.download_button(
+                    "Download generated private key",
+                    data=generated_keypair["private_pem"],
+                    file_name="x25519_private.pem",
+                    mime="application/x-pem-file",
+                )
         threat_level = st.selectbox("Threat level", ["speed", "balanced", "hardened"], index=1)
         mode = st.radio(
             "Profile mode",
@@ -171,6 +211,14 @@ def main() -> None:
         recipient_public_key_pem_text,
         recipient_public_key_pem_file,
     )
+    generated_keypair = _generated_x25519_keypair()
+    if (
+        key_mode != "Passphrase only"
+        and recipient_public_key_pem is None
+        and generated_keypair is not None
+    ):
+        recipient_public_key_pem = generated_keypair["public_pem"]
+
     if key_mode == "Passphrase only":
         recipient_public_key_pem = None
     if key_mode == "Passphrase only":
