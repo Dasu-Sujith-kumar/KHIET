@@ -1,0 +1,85 @@
+{
+  "arnold_padding_applied": true,
+  "chaos_seed": 16124906555074246935,
+  "claims_boundary": {
+    "does_not_claim_custom_cipher": true,
+    "does_not_modify_aes": true,
+    "maps_confidentiality_integrity_to": "AES-GCM under standard assumptions",
+    "maps_key_exchange_to": "X25519 ECDH hardness (when key_exchange mode uses x25519)"
+  },
+  "classification": {
+    "label": "medium",
+    "metrics": {
+      "edge_density": 0.0,
+      "entropy": 6.401642,
+      "variance_norm": 0.007225
+    },
+    "score": 0.441197
+  },
+  "dtype": "uint8",
+  "forced_profile": null,
+  "image_sha256_b64": "X2LLwCbn7Fjjf7tpwDwhNig2AoJ+f1KVArY2sZleaZM=",
+  "key_domains": {
+    "K1": "aes_key",
+    "K2": "nonce_key",
+    "K3": "chaos_key",
+    "K4": "metadata_mac_key"
+  },
+  "key_exchange": {
+    "ephemeral_public_key_pem_b64": null,
+    "forward_secrecy": false,
+    "mode": "passphrase_only"
+  },
+  "metadata_hmac": "c0aeae292652135d9e8b88d88aadaa121447f2d79826b369544f317afac98a19",
+  "nonce_b64": "SPGEp438AxTfgBmi",
+  "nonce_salt_b64": "SbQOe2iBwtfKiPZnavP2Xg==",
+  "nonce_strategy": "hmac_sha256(nonce_key, nonce_salt || context)[:12]",
+  "original_height": 96,
+  "original_shape": [
+    96,
+    96,
+    3
+  ],
+  "original_width": 96,
+  "profile": {
+    "arnold_iterations": 3,
+    "description": "Balanced security/performance profile.",
+    "name": "standard",
+    "permutation_rounds": 2
+  },
+  "salt_b64": "AYBrq2Lli2LvN+SzuarAHA==",
+  "security_context": {
+    "adversary_models": [
+      "Chosen-plaintext attacker",
+      "Known-plaintext attacker",
+      "Ciphertext-only attacker"
+    ],
+    "cli_key_exchange_inputs": {
+      "has_passphrase": true,
+      "has_recipient_public_key": false
+    },
+    "publication_goal": "Strong final-year + Scopus",
+    "strict_claims_mode": true
+  },
+  "threat_level": "balanced",
+  "threat_model": {
+    "adversary_classes": [
+      "Chosen-plaintext attacker",
+      "Known-plaintext attacker",
+      "Ciphertext-only attacker"
+    ],
+    "attack_surface": [
+      "key_reuse",
+      "seed_predictability",
+      "metadata_tampering",
+      "integrity_forgery",
+      "replay"
+    ]
+  },
+  "version": "3.0",
+  "working_shape": [
+    96,
+    96,
+    3
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "input": {
+    "path": "D:\\Downloads\\hybrid\\artifacts\\eval_smoke\\input.png",
+    "shape": [
+      96,
+      96,
+      3
+    ],
+    "dtype": "uint8",
+    "image_entropy": 6.557942
+  },
+  "variants": {
+    "aes_only": {
+      "variant": "aes_only",
+      "execution_time_ms": 73.4825,
+      "peak_memory_kib": 356.966797,
+      "entropy_cipher": 7.99325,
+      "adj_correlation_cipher": -0.000971,
+      "npcr": 99.656593,
+      "uaci": 33.600529,
+      "key_sensitivity": 50.006326,
+      "psnr": Infinity,
+      "mse": 0.0,
+      "cipher_size_bytes": 27664,
+      "cropped_input_shape": [
+        76,
+        76,
+        3
+      ],
+      "attack_resilience": {
+        "bit_flip_decrypt_success": false,
+        "noise_decrypt_success": false,
+        "crop_decrypt_success": false
+      }
+    },
+    "static_chaos_aes": {
+      "variant": "static_chaos_aes",
+      "execution_time_ms": 87.7883,
+      "peak_memory_kib": 796.344727,
+      "entropy_cipher": 7.994069,
+      "adj_correlation_cipher": -0.004755,
+      "npcr": 99.616831,
+      "uaci": 33.668308,
+      "key_sensitivity": 49.984637,
+      "psnr": Infinity,
+      "mse": 0.0,
+      "cipher_size_bytes": 27664,
+      "cropped_input_shape": [
+        76,
+        76,
+        3
+      ],
+      "attack_resilience": {
+        "bit_flip_decrypt_success": false,
+        "noise_decrypt_success": false,
+        "crop_decrypt_success": false
+      }
+    },
+    "proposed_hardened": {
+      "variant": "proposed_hardened",
+      "execution_time_ms": 132.1003,
+      "peak_memory_kib": 774.952148,
+      "entropy_cipher": 7.992891,
+      "adj_correlation_cipher": 0.0024,
+      "npcr": 99.674667,
+      "uaci": 33.53738,
+      "key_sensitivity": 49.854504,
+      "psnr": Infinity,
+      "mse": 0.0,
+      "cipher_size_bytes": 27664,
+      "cropped_input_shape": [
+        76,
+        76,
+        3
+      ],
+      "attack_resilience": {
+        "bit_flip_decrypt_success": false,
+        "noise_decrypt_success": false,
+        "crop_decrypt_success": false
+      }
+    }
+  },
+  "ablation_table": [
+    {
+      "version": "aes_only",
+      "entropy": 7.99325,
+      "npcr": 99.656593,
+      "uaci": 33.600529,
+      "time_ms": 73.4825,
+      "peak_memory_kib": 356.966797
+    },
+    {
+      "version": "static_chaos_aes",
+      "entropy": 7.994069,
+      "npcr": 99.616831,
+      "uaci": 33.668308,
+      "time_ms": 87.7883,
+      "peak_memory_kib": 796.344727
+    },
+    {
+      "version": "proposed_hardened",
+      "entropy": 7.992891,
+      "npcr": 99.674667,
+      "uaci": 33.53738,
+      "time_ms": 132.1003,
+      "peak_memory_kib": 774.952148
+    }
+  ]
+}

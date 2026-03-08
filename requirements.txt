@@ -1,0 +1,6 @@
+numpy
+opencv-python
+cryptography
+onnxruntime
+streamlit
+Pillow
