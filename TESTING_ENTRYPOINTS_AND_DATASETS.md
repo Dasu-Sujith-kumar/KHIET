@@ -73,7 +73,28 @@ Check command:
 python evaluate_pipeline.py --help
 ```
 
-### 3.3 Key Management Entry Point
+### 3.3 Batch Encryption + Evaluation Entry Point
+
+File:
+
+- `batch_run.py`
+
+Purpose:
+
+- encrypt a batch of images in 3 modes:
+  - `passphrase_only`
+  - `x25519_only`
+  - `hybrid`
+- write 3 output folders with `.enc` + `.meta.json` pairs
+- run attacks/evaluation across all pairs and generate an aggregated report
+
+Check command:
+
+```powershell
+python batch_run.py --help
+```
+
+### 3.4 Key Management Entry Point
 
 File:
 
@@ -91,7 +112,7 @@ python key_manager.py --help
 python key_manager.py x25519 --help
 ```
 
-### 3.4 Encryption UI Entry Point
+### 3.5 Encryption UI Entry Point
 
 File:
 
@@ -107,7 +128,7 @@ Start command:
 streamlit run encrypt_app.py
 ```
 
-### 3.5 Decryption UI Entry Point
+### 3.6 Decryption UI Entry Point
 
 File:
 
@@ -241,6 +262,21 @@ Expected output file:
 
 - `artifacts\doc_eval\evaluation_results.json`
 
+Optional (deeper attack simulation + paper-style plots):
+
+```powershell
+python evaluate_pipeline.py `
+  artifacts\eval_smoke\input.png `
+  --passphrase p@ss `
+  --out-dir artifacts\doc_eval `
+  --attack-suite high `
+  --report
+```
+
+Expected report:
+
+- `artifacts\doc_eval\report\report.html`
+
 ## 7. What Was Verified in This Workspace
 
 The following command paths were validated successfully in this repository:
@@ -349,6 +385,15 @@ The evaluation runner currently produces:
   - `aes_only`
   - `static_chaos_aes`
   - `proposed_hardened`
+
+When run with `--attack-suite high`, it additionally produces:
+
+- attack success-rate sweeps (bit flips, byte mutation, noise, truncation, block shuffling)
+- metadata tampering suite (for `proposed_hardened`)
+
+When run with `--report`, it additionally produces:
+
+- `report/report.html` plus multiple `.png` charts and `.csv` tables
 
 Important note:
 

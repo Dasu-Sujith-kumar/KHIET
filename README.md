@@ -113,3 +113,26 @@ Output includes:
 - Peak memory
 - Bit-flip / noise / cropping attack outcomes
 - Ablation table for `aes_only`, `static_chaos_aes`, `proposed_hardened`
+
+Optional (paper-style plots + deeper attack sweeps):
+
+```bash
+python evaluate_pipeline.py sample.png --passphrase "p@ss" --out-dir artifacts/eval --attack-suite high --report
+```
+
+This additionally writes:
+
+- `artifacts/eval/report/report.html`
+- multiple `.png` charts and `.csv` tables under `artifacts/eval/report/`
+
+## Batch Encryption + Evaluation (100 images × 3 modes)
+
+Create 3 folders (`passphrase_only`, `x25519_only`, `hybrid`) with `.enc` + `.meta.json` pairs and an aggregated report:
+
+```bash
+python batch_run.py datasets/smoke --out-dir artifacts/batch_run --count 100 --passphrase "p@ss" --report
+```
+
+Report:
+
+- `artifacts/batch_run/evaluation/report/report.html`
