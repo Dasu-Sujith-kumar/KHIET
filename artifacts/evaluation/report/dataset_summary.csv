@@ -1,0 +1,7 @@
+metric,value
+unique_images,100
+pairs_passphrase_only,100
+pairs_x25519_only,100
+pairs_hybrid,100
+total_pairs,300
+total_output_files_estimate,600

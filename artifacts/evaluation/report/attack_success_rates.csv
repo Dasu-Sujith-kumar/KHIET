@@ -1,0 +1,4 @@
+mode,attack_resilience__bit_flip_decrypt_success,attack_resilience__noise_decrypt_success,attack_resilience__partial_ciphertext_loss_center_0_8_decrypt_success,attack_resilience__partial_ciphertext_loss_head_0_9_decrypt_success,attack_resilience__partial_ciphertext_loss_tail_0_9_decrypt_success,attack_resilience__byte_mutation_decrypt_success,attack_resilience__block_shuffle_decrypt_success,attack_resilience__wrong_passphrase_decrypt_success,attack_resilience__wrong_private_key_decrypt_success,attack_resilience__replay_swap_ciphertext_decrypt_success,attack_resilience__replay_swap_metadata_decrypt_success
+passphrase_only,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+x25519_only,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+hybrid,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
