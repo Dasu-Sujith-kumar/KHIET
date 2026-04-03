@@ -1,0 +1,81 @@
+split,label,path,file_type,recommended_risk
+test,faces,sample-images\faces\029185.jpg,raster,high
+test,faces,sample-images\faces\064197.jpg,raster,high
+test,faces,sample-images\faces\154795.jpg,raster,high
+test,faces,sample-images\faces\177393.jpg,raster,high
+test,forms,sample-images\forms\82200067_0069.png,raster,high
+test,forms,sample-images\forms\82573104.png,raster,high
+test,forms,sample-images\forms\83594639.png,raster,high
+test,forms,sample-images\forms\86263525.png,raster,high
+test,land-scapes and others,sample-images\land-scapes and others\image-1762.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-783.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-833.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-921.jpg,raster,low
+test,manga,sample-images\manga\002.webp,raster,medium
+test,manga,sample-images\manga\004.webp,raster,medium
+test,manga,sample-images\manga\007.webp,raster,medium
+test,manga,sample-images\manga\009.webp,raster,medium
+test,medical,sample-images\medical\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-217.dcm,dicom,high
+test,medical,sample-images\medical\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-235.dcm,dicom,high
+test,medical,sample-images\medical\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-023.dcm,dicom,high
+test,medical,sample-images\medical\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-049.dcm,dicom,high
+train,faces,sample-images\faces\006557.jpg,raster,high
+train,faces,sample-images\faces\022791.jpg,raster,high
+train,faces,sample-images\faces\026869.jpg,raster,high
+train,faces,sample-images\faces\036580.jpg,raster,high
+train,faces,sample-images\faces\058514.jpg,raster,high
+train,faces,sample-images\faces\072098.jpg,raster,high
+train,faces,sample-images\faces\110605.jpg,raster,high
+train,faces,sample-images\faces\142965.jpg,raster,high
+train,faces,sample-images\faces\167622.jpg,raster,high
+train,faces,sample-images\faces\193062.jpg,raster,high
+train,faces,sample-images\faces\194162.jpg,raster,high
+train,faces,sample-images\faces\194394.jpg,raster,high
+train,forms,sample-images\forms\82092117.png,raster,high
+train,forms,sample-images\forms\82250337_0338.png,raster,high
+train,forms,sample-images\forms\82253058_3059.png,raster,high
+train,forms,sample-images\forms\82837252.png,raster,high
+train,forms,sample-images\forms\83443897.png,raster,high
+train,forms,sample-images\forms\85540866.png,raster,high
+train,forms,sample-images\forms\86075409_5410.png,raster,high
+train,forms,sample-images\forms\86236474_6476.png,raster,high
+train,forms,sample-images\forms\86328049_8050.png,raster,high
+train,forms,sample-images\forms\87125460.png,raster,high
+train,forms,sample-images\forms\87594142_87594144.png,raster,high
+train,forms,sample-images\forms\92380595.png,raster,high
+train,land-scapes and others,sample-images\land-scapes and others\image-1532.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1666.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1675.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-199.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-208.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-219.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-330.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-338.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-457.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-600.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-736.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-744.jpg,raster,low
+train,manga,sample-images\manga\001.webp,raster,medium
+train,manga,sample-images\manga\003.webp,raster,medium
+train,manga,sample-images\manga\005.webp,raster,medium
+train,manga,sample-images\manga\006.webp,raster,medium
+train,manga,sample-images\manga\008.webp,raster,medium
+train,manga,sample-images\manga\010.webp,raster,medium
+train,manga,sample-images\manga\011.webp,raster,medium
+train,manga,sample-images\manga\012.webp,raster,medium
+train,manga,sample-images\manga\013.webp,raster,medium
+train,manga,sample-images\manga\014.webp,raster,medium
+train,manga,sample-images\manga\015.webp,raster,medium
+train,manga,sample-images\manga\016.webp,raster,medium
+train,medical,sample-images\medical\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-045.dcm,dicom,high
+train,medical,sample-images\medical\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-081.dcm,dicom,high
+train,medical,sample-images\medical\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-128.dcm,dicom,high
+train,medical,sample-images\medical\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-061.dcm,dicom,high
+train,medical,sample-images\medical\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-135.dcm,dicom,high
+train,medical,sample-images\medical\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-165.dcm,dicom,high
+train,medical,sample-images\medical\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-252.dcm,dicom,high
+train,medical,sample-images\medical\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-069.dcm,dicom,high
+train,medical,sample-images\medical\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-007.dcm,dicom,high
+train,medical,sample-images\medical\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-076.dcm,dicom,high
+train,medical,sample-images\medical\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-091.dcm,dicom,high
+train,medical,sample-images\medical\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-101.dcm,dicom,high

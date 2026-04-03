@@ -1,0 +1,93 @@
+{
+  "accuracy": 0.9,
+  "labels": [
+    "faces",
+    "forms",
+    "land-scapes and others",
+    "manga",
+    "medical"
+  ],
+  "balanced_count_per_class": 16,
+  "discovered_counts": {
+    "faces": 202599,
+    "forms": 50,
+    "land-scapes and others": 1878,
+    "manga": 16,
+    "medical": 721
+  },
+  "train_counts": {
+    "medical": 12,
+    "manga": 12,
+    "forms": 12,
+    "land-scapes and others": 12,
+    "faces": 12
+  },
+  "test_counts": {
+    "medical": 4,
+    "faces": 4,
+    "forms": 4,
+    "manga": 4,
+    "land-scapes and others": 4
+  },
+  "best_params": {
+    "max_depth": null,
+    "max_features": 0.35,
+    "min_samples_leaf": 1,
+    "n_estimators": 200
+  },
+  "best_cv_score": 0.9311111111111111,
+  "classification_report": {
+    "faces": {
+      "precision": 0.8,
+      "recall": 1.0,
+      "f1-score": 0.8888888888888888,
+      "support": 4.0
+    },
+    "forms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 4.0
+    },
+    "land-scapes and others": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1-score": 0.6666666666666666,
+      "support": 4.0
+    },
+    "manga": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 4.0
+    },
+    "medical": {
+      "precision": 0.8,
+      "recall": 1.0,
+      "f1-score": 0.8888888888888888,
+      "support": 4.0
+    },
+    "accuracy": 0.9,
+    "macro avg": {
+      "precision": 0.9199999999999999,
+      "recall": 0.9,
+      "f1-score": 0.888888888888889,
+      "support": 20.0
+    },
+    "weighted avg": {
+      "precision": 0.9199999999999999,
+      "recall": 0.9,
+      "f1-score": 0.888888888888889,
+      "support": 20.0
+    }
+  },
+  "recommended_risk_by_class": {
+    "faces": "high",
+    "forms": "high",
+    "medical": "high",
+    "manga": "medium",
+    "land-scapes and others": "low"
+  },
+  "output_model": "adaptive_rf_report\\adaptive_random_forest.pkl",
+  "report_dir": "adaptive_rf_report"
+}

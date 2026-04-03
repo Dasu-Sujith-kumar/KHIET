@@ -1,0 +1,6 @@
+actual/predicted,faces,forms,land-scapes and others,manga,medical
+faces,4,0,0,0,0
+forms,0,4,0,0,0
+land-scapes and others,1,0,2,0,1
+manga,0,0,0,4,0
+medical,0,0,0,0,4
