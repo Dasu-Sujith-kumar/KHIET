@@ -1,0 +1,103 @@
+{
+  "accuracy": 0.9565217391304348,
+  "labels": [
+    "faces",
+    "forms",
+    "land-scapes and others",
+    "manga",
+    "medical"
+  ],
+  "sampling_strategy": "up_to_limit",
+  "sampled_counts": {
+    "faces": 100,
+    "forms": 50,
+    "land-scapes and others": 100,
+    "manga": 16,
+    "medical": 100
+  },
+  "discovered_counts": {
+    "faces": 202599,
+    "forms": 50,
+    "land-scapes and others": 1878,
+    "manga": 16,
+    "medical": 720
+  },
+  "train_counts": {
+    "medical": 75,
+    "faces": 75,
+    "land-scapes and others": 75,
+    "forms": 37,
+    "manga": 12
+  },
+  "test_counts": {
+    "faces": 25,
+    "medical": 25,
+    "land-scapes and others": 25,
+    "manga": 4,
+    "forms": 13
+  },
+  "best_params": {
+    "max_depth": null,
+    "max_features": 0.35,
+    "min_samples_leaf": 1,
+    "n_estimators": 100
+  },
+  "best_cv_score": 0.9650015322761064,
+  "classification_report": {
+    "faces": {
+      "precision": 0.8928571428571429,
+      "recall": 1.0,
+      "f1-score": 0.9433962264150944,
+      "support": 25.0
+    },
+    "forms": {
+      "precision": 0.9285714285714286,
+      "recall": 1.0,
+      "f1-score": 0.9629629629629629,
+      "support": 13.0
+    },
+    "land-scapes and others": {
+      "precision": 1.0,
+      "recall": 0.88,
+      "f1-score": 0.9361702127659575,
+      "support": 25.0
+    },
+    "manga": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 4.0
+    },
+    "medical": {
+      "precision": 1.0,
+      "recall": 0.96,
+      "f1-score": 0.9795918367346939,
+      "support": 25.0
+    },
+    "accuracy": 0.9565217391304348,
+    "macro avg": {
+      "precision": 0.9642857142857142,
+      "recall": 0.968,
+      "f1-score": 0.9644242477757418,
+      "support": 92.0
+    },
+    "weighted avg": {
+      "precision": 0.9607919254658385,
+      "recall": 0.9565217391304348,
+      "f1-score": 0.9564942980044799,
+      "support": 92.0
+    }
+  },
+  "recommended_risk_by_class": {
+    "faces": "high",
+    "forms": "high",
+    "medical": "high",
+    "manga": "medium",
+    "land-scapes and others": "low"
+  },
+  "output_model": "adaptive_rf_report\\adaptive_random_forest_cap100.pkl",
+  "report_dir": "adaptive_rf_report_cap100",
+  "medical_export_dir": "adaptive_rf_report\\medical_png_export",
+  "skipped_file_count": 0,
+  "medical_export_failure_count": 1
+}
