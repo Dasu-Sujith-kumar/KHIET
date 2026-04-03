@@ -1,0 +1,667 @@
+split,label,path,file_type,recommended_risk
+test,faces,sample-images\faces\000851.jpg,raster,high
+test,faces,sample-images\faces\008415.jpg,raster,high
+test,faces,sample-images\faces\016654.jpg,raster,high
+test,faces,sample-images\faces\017351.jpg,raster,high
+test,faces,sample-images\faces\020657.jpg,raster,high
+test,faces,sample-images\faces\023832.jpg,raster,high
+test,faces,sample-images\faces\024313.jpg,raster,high
+test,faces,sample-images\faces\040066.jpg,raster,high
+test,faces,sample-images\faces\050408.jpg,raster,high
+test,faces,sample-images\faces\052144.jpg,raster,high
+test,faces,sample-images\faces\055308.jpg,raster,high
+test,faces,sample-images\faces\056444.jpg,raster,high
+test,faces,sample-images\faces\057571.jpg,raster,high
+test,faces,sample-images\faces\057788.jpg,raster,high
+test,faces,sample-images\faces\058514.jpg,raster,high
+test,faces,sample-images\faces\061025.jpg,raster,high
+test,faces,sample-images\faces\069437.jpg,raster,high
+test,faces,sample-images\faces\069947.jpg,raster,high
+test,faces,sample-images\faces\070187.jpg,raster,high
+test,faces,sample-images\faces\078236.jpg,raster,high
+test,faces,sample-images\faces\088237.jpg,raster,high
+test,faces,sample-images\faces\089175.jpg,raster,high
+test,faces,sample-images\faces\089195.jpg,raster,high
+test,faces,sample-images\faces\093133.jpg,raster,high
+test,faces,sample-images\faces\099472.jpg,raster,high
+test,faces,sample-images\faces\100040.jpg,raster,high
+test,faces,sample-images\faces\100865.jpg,raster,high
+test,faces,sample-images\faces\105163.jpg,raster,high
+test,faces,sample-images\faces\109975.jpg,raster,high
+test,faces,sample-images\faces\110786.jpg,raster,high
+test,faces,sample-images\faces\120286.jpg,raster,high
+test,faces,sample-images\faces\130871.jpg,raster,high
+test,faces,sample-images\faces\140022.jpg,raster,high
+test,faces,sample-images\faces\140569.jpg,raster,high
+test,faces,sample-images\faces\140764.jpg,raster,high
+test,faces,sample-images\faces\142854.jpg,raster,high
+test,faces,sample-images\faces\157816.jpg,raster,high
+test,faces,sample-images\faces\159638.jpg,raster,high
+test,faces,sample-images\faces\166456.jpg,raster,high
+test,faces,sample-images\faces\167622.jpg,raster,high
+test,faces,sample-images\faces\177393.jpg,raster,high
+test,faces,sample-images\faces\178333.jpg,raster,high
+test,faces,sample-images\faces\180398.jpg,raster,high
+test,faces,sample-images\faces\184700.jpg,raster,high
+test,faces,sample-images\faces\187701.jpg,raster,high
+test,faces,sample-images\faces\191137.jpg,raster,high
+test,faces,sample-images\faces\193062.jpg,raster,high
+test,faces,sample-images\faces\194162.jpg,raster,high
+test,faces,sample-images\faces\196839.jpg,raster,high
+test,faces,sample-images\faces\199888.jpg,raster,high
+test,forms,sample-images\forms\82251504.png,raster,high
+test,forms,sample-images\forms\82252956_2958.png,raster,high
+test,forms,sample-images\forms\82253058_3059.png,raster,high
+test,forms,sample-images\forms\82504862.png,raster,high
+test,forms,sample-images\forms\83573282.png,raster,high
+test,forms,sample-images\forms\83996357.png,raster,high
+test,forms,sample-images\forms\85240939.png,raster,high
+test,forms,sample-images\forms\86230203_0206.png,raster,high
+test,forms,sample-images\forms\86244113.png,raster,high
+test,forms,sample-images\forms\87093315_87093318.png,raster,high
+test,forms,sample-images\forms\87528321.png,raster,high
+test,forms,sample-images\forms\89856243.png,raster,high
+test,forms,sample-images\forms\91814768_91814769.png,raster,high
+test,land-scapes and others,sample-images\land-scapes and others\image-1013.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1063.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1065.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1070.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-108.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1134.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1179.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1231.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1255.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1263.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1291.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1299.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1321.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1364.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1421.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1428.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1433.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1436.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1447.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1475.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1479.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-148.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-15.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1515.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1586.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1596.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1601.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1613.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1718.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1785.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1827.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1854.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1860.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1870.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1882.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1908.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1926.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-1962.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-234.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-269.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-404.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-454.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-499.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-532.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-669.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-773.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-817.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-881.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-896.jpg,raster,low
+test,land-scapes and others,sample-images\land-scapes and others\image-958.jpg,raster,low
+test,manga,sample-images\manga\006.webp,raster,medium
+test,manga,sample-images\manga\009.webp,raster,medium
+test,manga,sample-images\manga\012.webp,raster,medium
+test,manga,sample-images\manga\013.webp,raster,medium
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-001.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-002.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-009.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-029.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-040.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-043.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-072.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-103.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-106.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-115.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-35511\3000923.000000-NA-62357\1-1.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-35511\3000923.000000-NA-62357\1-2.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-26851\3000972.000000-NA-22902\1-1.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-028.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-030.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-038.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-105.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-109.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-119.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-133.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-150.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-153.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-158.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-176.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-181.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-186.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-188.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-203.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-204.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-216.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-253.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-017.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-032.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-039.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-070.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-080.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-083.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-122.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-007.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-016.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-025.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-030.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-032.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-062.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-078.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-082.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-103.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0005\01-01-2000-NA-NA-42125\3000548.000000-NA-86225\1-004.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0005\01-01-2000-NA-NA-42125\3000548.000000-NA-86225\1-044.png,raster,high
+test,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0005\01-01-2000-NA-NA-42125\3000548.000000-NA-86225\1-050.png,raster,high
+train,faces,sample-images\faces\000150.jpg,raster,high
+train,faces,sample-images\faces\001704.jpg,raster,high
+train,faces,sample-images\faces\003010.jpg,raster,high
+train,faces,sample-images\faces\006557.jpg,raster,high
+train,faces,sample-images\faces\006957.jpg,raster,high
+train,faces,sample-images\faces\007812.jpg,raster,high
+train,faces,sample-images\faces\008332.jpg,raster,high
+train,faces,sample-images\faces\011391.jpg,raster,high
+train,faces,sample-images\faces\012013.jpg,raster,high
+train,faces,sample-images\faces\012352.jpg,raster,high
+train,faces,sample-images\faces\014664.jpg,raster,high
+train,faces,sample-images\faces\018234.jpg,raster,high
+train,faces,sample-images\faces\018718.jpg,raster,high
+train,faces,sample-images\faces\020917.jpg,raster,high
+train,faces,sample-images\faces\022791.jpg,raster,high
+train,faces,sample-images\faces\024562.jpg,raster,high
+train,faces,sample-images\faces\025354.jpg,raster,high
+train,faces,sample-images\faces\026477.jpg,raster,high
+train,faces,sample-images\faces\026794.jpg,raster,high
+train,faces,sample-images\faces\026869.jpg,raster,high
+train,faces,sample-images\faces\027895.jpg,raster,high
+train,faces,sample-images\faces\028744.jpg,raster,high
+train,faces,sample-images\faces\029185.jpg,raster,high
+train,faces,sample-images\faces\029243.jpg,raster,high
+train,faces,sample-images\faces\030030.jpg,raster,high
+train,faces,sample-images\faces\032723.jpg,raster,high
+train,faces,sample-images\faces\036263.jpg,raster,high
+train,faces,sample-images\faces\036580.jpg,raster,high
+train,faces,sample-images\faces\036604.jpg,raster,high
+train,faces,sample-images\faces\037453.jpg,raster,high
+train,faces,sample-images\faces\040067.jpg,raster,high
+train,faces,sample-images\faces\040759.jpg,raster,high
+train,faces,sample-images\faces\041461.jpg,raster,high
+train,faces,sample-images\faces\041854.jpg,raster,high
+train,faces,sample-images\faces\041939.jpg,raster,high
+train,faces,sample-images\faces\042350.jpg,raster,high
+train,faces,sample-images\faces\042639.jpg,raster,high
+train,faces,sample-images\faces\042835.jpg,raster,high
+train,faces,sample-images\faces\044863.jpg,raster,high
+train,faces,sample-images\faces\046833.jpg,raster,high
+train,faces,sample-images\faces\052125.jpg,raster,high
+train,faces,sample-images\faces\054922.jpg,raster,high
+train,faces,sample-images\faces\055739.jpg,raster,high
+train,faces,sample-images\faces\057315.jpg,raster,high
+train,faces,sample-images\faces\057494.jpg,raster,high
+train,faces,sample-images\faces\059743.jpg,raster,high
+train,faces,sample-images\faces\060044.jpg,raster,high
+train,faces,sample-images\faces\060991.jpg,raster,high
+train,faces,sample-images\faces\064176.jpg,raster,high
+train,faces,sample-images\faces\064197.jpg,raster,high
+train,faces,sample-images\faces\064652.jpg,raster,high
+train,faces,sample-images\faces\065907.jpg,raster,high
+train,faces,sample-images\faces\068877.jpg,raster,high
+train,faces,sample-images\faces\069046.jpg,raster,high
+train,faces,sample-images\faces\069343.jpg,raster,high
+train,faces,sample-images\faces\069987.jpg,raster,high
+train,faces,sample-images\faces\070766.jpg,raster,high
+train,faces,sample-images\faces\072098.jpg,raster,high
+train,faces,sample-images\faces\072843.jpg,raster,high
+train,faces,sample-images\faces\072870.jpg,raster,high
+train,faces,sample-images\faces\072927.jpg,raster,high
+train,faces,sample-images\faces\075862.jpg,raster,high
+train,faces,sample-images\faces\076855.jpg,raster,high
+train,faces,sample-images\faces\076940.jpg,raster,high
+train,faces,sample-images\faces\082491.jpg,raster,high
+train,faces,sample-images\faces\082695.jpg,raster,high
+train,faces,sample-images\faces\085009.jpg,raster,high
+train,faces,sample-images\faces\090166.jpg,raster,high
+train,faces,sample-images\faces\094105.jpg,raster,high
+train,faces,sample-images\faces\094801.jpg,raster,high
+train,faces,sample-images\faces\094896.jpg,raster,high
+train,faces,sample-images\faces\095639.jpg,raster,high
+train,faces,sample-images\faces\097041.jpg,raster,high
+train,faces,sample-images\faces\098020.jpg,raster,high
+train,faces,sample-images\faces\099231.jpg,raster,high
+train,faces,sample-images\faces\099596.jpg,raster,high
+train,faces,sample-images\faces\099648.jpg,raster,high
+train,faces,sample-images\faces\103713.jpg,raster,high
+train,faces,sample-images\faces\104701.jpg,raster,high
+train,faces,sample-images\faces\110605.jpg,raster,high
+train,faces,sample-images\faces\110667.jpg,raster,high
+train,faces,sample-images\faces\112312.jpg,raster,high
+train,faces,sample-images\faces\113972.jpg,raster,high
+train,faces,sample-images\faces\117758.jpg,raster,high
+train,faces,sample-images\faces\118859.jpg,raster,high
+train,faces,sample-images\faces\118941.jpg,raster,high
+train,faces,sample-images\faces\120436.jpg,raster,high
+train,faces,sample-images\faces\121179.jpg,raster,high
+train,faces,sample-images\faces\122697.jpg,raster,high
+train,faces,sample-images\faces\129373.jpg,raster,high
+train,faces,sample-images\faces\131226.jpg,raster,high
+train,faces,sample-images\faces\132476.jpg,raster,high
+train,faces,sample-images\faces\133081.jpg,raster,high
+train,faces,sample-images\faces\133086.jpg,raster,high
+train,faces,sample-images\faces\133570.jpg,raster,high
+train,faces,sample-images\faces\138705.jpg,raster,high
+train,faces,sample-images\faces\139030.jpg,raster,high
+train,faces,sample-images\faces\141290.jpg,raster,high
+train,faces,sample-images\faces\141395.jpg,raster,high
+train,faces,sample-images\faces\142965.jpg,raster,high
+train,faces,sample-images\faces\144715.jpg,raster,high
+train,faces,sample-images\faces\145025.jpg,raster,high
+train,faces,sample-images\faces\146002.jpg,raster,high
+train,faces,sample-images\faces\147128.jpg,raster,high
+train,faces,sample-images\faces\147160.jpg,raster,high
+train,faces,sample-images\faces\148683.jpg,raster,high
+train,faces,sample-images\faces\151350.jpg,raster,high
+train,faces,sample-images\faces\152970.jpg,raster,high
+train,faces,sample-images\faces\153246.jpg,raster,high
+train,faces,sample-images\faces\154473.jpg,raster,high
+train,faces,sample-images\faces\154795.jpg,raster,high
+train,faces,sample-images\faces\156209.jpg,raster,high
+train,faces,sample-images\faces\156346.jpg,raster,high
+train,faces,sample-images\faces\158264.jpg,raster,high
+train,faces,sample-images\faces\159681.jpg,raster,high
+train,faces,sample-images\faces\162142.jpg,raster,high
+train,faces,sample-images\faces\163919.jpg,raster,high
+train,faces,sample-images\faces\164482.jpg,raster,high
+train,faces,sample-images\faces\164795.jpg,raster,high
+train,faces,sample-images\faces\166641.jpg,raster,high
+train,faces,sample-images\faces\167497.jpg,raster,high
+train,faces,sample-images\faces\167773.jpg,raster,high
+train,faces,sample-images\faces\168025.jpg,raster,high
+train,faces,sample-images\faces\168520.jpg,raster,high
+train,faces,sample-images\faces\169879.jpg,raster,high
+train,faces,sample-images\faces\170364.jpg,raster,high
+train,faces,sample-images\faces\171820.jpg,raster,high
+train,faces,sample-images\faces\173347.jpg,raster,high
+train,faces,sample-images\faces\175683.jpg,raster,high
+train,faces,sample-images\faces\178385.jpg,raster,high
+train,faces,sample-images\faces\178707.jpg,raster,high
+train,faces,sample-images\faces\179188.jpg,raster,high
+train,faces,sample-images\faces\179468.jpg,raster,high
+train,faces,sample-images\faces\183014.jpg,raster,high
+train,faces,sample-images\faces\183849.jpg,raster,high
+train,faces,sample-images\faces\183978.jpg,raster,high
+train,faces,sample-images\faces\188197.jpg,raster,high
+train,faces,sample-images\faces\188660.jpg,raster,high
+train,faces,sample-images\faces\188933.jpg,raster,high
+train,faces,sample-images\faces\189293.jpg,raster,high
+train,faces,sample-images\faces\191295.jpg,raster,high
+train,faces,sample-images\faces\194394.jpg,raster,high
+train,faces,sample-images\faces\195295.jpg,raster,high
+train,faces,sample-images\faces\195826.jpg,raster,high
+train,faces,sample-images\faces\198124.jpg,raster,high
+train,faces,sample-images\faces\198917.jpg,raster,high
+train,faces,sample-images\faces\199744.jpg,raster,high
+train,faces,sample-images\faces\200146.jpg,raster,high
+train,faces,sample-images\faces\201409.jpg,raster,high
+train,faces,sample-images\faces\201484.jpg,raster,high
+train,forms,sample-images\forms\82092117.png,raster,high
+train,forms,sample-images\forms\82200067_0069.png,raster,high
+train,forms,sample-images\forms\82250337_0338.png,raster,high
+train,forms,sample-images\forms\82253245_3247.png,raster,high
+train,forms,sample-images\forms\82253362_3364.png,raster,high
+train,forms,sample-images\forms\82254765.png,raster,high
+train,forms,sample-images\forms\82491256.png,raster,high
+train,forms,sample-images\forms\82562350.png,raster,high
+train,forms,sample-images\forms\82573104.png,raster,high
+train,forms,sample-images\forms\82837252.png,raster,high
+train,forms,sample-images\forms\83443897.png,raster,high
+train,forms,sample-images\forms\83553333_3334.png,raster,high
+train,forms,sample-images\forms\83594639.png,raster,high
+train,forms,sample-images\forms\83624198.png,raster,high
+train,forms,sample-images\forms\83635935.png,raster,high
+train,forms,sample-images\forms\83641919_1921.png,raster,high
+train,forms,sample-images\forms\83772145.png,raster,high
+train,forms,sample-images\forms\83823750.png,raster,high
+train,forms,sample-images\forms\85201976.png,raster,high
+train,forms,sample-images\forms\85540866.png,raster,high
+train,forms,sample-images\forms\85629964.png,raster,high
+train,forms,sample-images\forms\86075409_5410.png,raster,high
+train,forms,sample-images\forms\86079776_9777.png,raster,high
+train,forms,sample-images\forms\86220490.png,raster,high
+train,forms,sample-images\forms\86236474_6476.png,raster,high
+train,forms,sample-images\forms\86263525.png,raster,high
+train,forms,sample-images\forms\86328049_8050.png,raster,high
+train,forms,sample-images\forms\87086073.png,raster,high
+train,forms,sample-images\forms\87125460.png,raster,high
+train,forms,sample-images\forms\87137840.png,raster,high
+train,forms,sample-images\forms\87147607.png,raster,high
+train,forms,sample-images\forms\87332450.png,raster,high
+train,forms,sample-images\forms\87428306.png,raster,high
+train,forms,sample-images\forms\87528380.png,raster,high
+train,forms,sample-images\forms\87594142_87594144.png,raster,high
+train,forms,sample-images\forms\92380595.png,raster,high
+train,forms,sample-images\forms\93106788.png,raster,high
+train,land-scapes and others,sample-images\land-scapes and others\image-1022.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1036.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1041.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1044.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1053.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1064.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-107.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1106.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1122.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1142.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-115.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1169.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1176.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1187.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1193.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1197.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1201.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-121.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1217.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1219.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-122.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1227.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-123.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-124.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-125.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1260.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1274.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1279.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1280.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-129.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1300.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1312.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1313.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1338.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-137.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1388.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1449.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-145.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1453.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-146.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-147.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1470.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1483.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1529.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-153.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1553.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1564.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1575.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1598.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1599.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1603.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-162.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1640.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1652.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1655.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1669.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1680.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-169.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1716.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1717.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1719.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-172.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-175.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1751.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1764.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1765.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1766.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1818.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-185.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1863.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1878.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1883.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1887.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1888.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1904.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1917.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1918.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1943.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1968.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-1974.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-201.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-203.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-208.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-210.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-211.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-241.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-257.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-259.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-274.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-282.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-299.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-31.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-329.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-334.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-349.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-350.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-353.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-389.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-394.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-405.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-408.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-41.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-427.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-449.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-45.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-453.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-462.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-468.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-477.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-485.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-488.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-5.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-502.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-505.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-508.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-511.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-515.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-526.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-529.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-534.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-567.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-568.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-601.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-616.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-642.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-66.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-679.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-683.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-705.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-720.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-740.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-742.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-792.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-830.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-84.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-854.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-872.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-876.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-879.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-887.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-888.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-913.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-920.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-922.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-923.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-940.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-969.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-981.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-987.jpg,raster,low
+train,land-scapes and others,sample-images\land-scapes and others\image-994.jpg,raster,low
+train,manga,sample-images\manga\001.webp,raster,medium
+train,manga,sample-images\manga\002.webp,raster,medium
+train,manga,sample-images\manga\003.webp,raster,medium
+train,manga,sample-images\manga\004.webp,raster,medium
+train,manga,sample-images\manga\005.webp,raster,medium
+train,manga,sample-images\manga\007.webp,raster,medium
+train,manga,sample-images\manga\008.webp,raster,medium
+train,manga,sample-images\manga\010.webp,raster,medium
+train,manga,sample-images\manga\011.webp,raster,medium
+train,manga,sample-images\manga\014.webp,raster,medium
+train,manga,sample-images\manga\015.webp,raster,medium
+train,manga,sample-images\manga\016.webp,raster,medium
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-004.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-010.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-025.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-026.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-037.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-041.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-046.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-053.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-071.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-075.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-076.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-078.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-087.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-095.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-096.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-107.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-110.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-111.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-112.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-119.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-128.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0001\01-01-2000-NA-NA-30178\3000566.000000-NA-03192\1-131.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-002.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-015.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-016.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-017.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-023.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-024.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-026.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-031.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-043.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-046.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-047.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-048.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-059.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-061.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-062.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-066.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-068.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-069.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-073.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-074.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-080.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-083.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-092.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-093.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-095.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-098.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-107.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-115.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-120.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-122.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-125.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-132.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-135.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-136.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-138.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-143.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-148.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-155.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-156.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-167.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-171.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-172.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-173.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-174.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-177.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-180.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-182.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-194.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-199.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-201.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-205.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-206.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-208.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-218.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-222.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-223.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-224.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-227.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-231.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-237.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-238.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-243.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-256.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0002\01-01-2000-NA-NA-98329\3000522.000000-NA-04919\1-259.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-004.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-007.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-008.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-011.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-014.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-015.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-020.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-021.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-029.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-036.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-040.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-043.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-045.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-047.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-051.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-067.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-068.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-075.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-099.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-116.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-117.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-118.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-120.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-131.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-133.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-134.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0003\01-01-2000-NA-NA-94866\3000611.000000-NA-03264\1-140.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-008.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-009.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-014.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-022.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-023.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-024.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-031.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-034.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-036.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-040.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-048.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-049.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-054.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-055.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-077.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-084.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-088.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-089.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-094.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-100.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-107.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-109.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-118.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0004\01-01-2000-NA-NA-91780\3000534.000000-NA-58228\1-119.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0005\01-01-2000-NA-NA-06608\3001613.000000-NA-05796\1-1.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0005\01-01-2000-NA-NA-42125\3000548.000000-NA-86225\1-006.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0005\01-01-2000-NA-NA-42125\3000548.000000-NA-86225\1-007.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0005\01-01-2000-NA-NA-42125\3000548.000000-NA-86225\1-008.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0005\01-01-2000-NA-NA-42125\3000548.000000-NA-86225\1-020.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0005\01-01-2000-NA-NA-42125\3000548.000000-NA-86225\1-021.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0005\01-01-2000-NA-NA-42125\3000548.000000-NA-86225\1-022.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0005\01-01-2000-NA-NA-42125\3000548.000000-NA-86225\1-026.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0005\01-01-2000-NA-NA-42125\3000548.000000-NA-86225\1-028.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0005\01-01-2000-NA-NA-42125\3000548.000000-NA-86225\1-035.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0005\01-01-2000-NA-NA-42125\3000548.000000-NA-86225\1-039.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0005\01-01-2000-NA-NA-42125\3000548.000000-NA-86225\1-046.png,raster,high
+train,medical,adaptive_rf_report\medical_png_export\manifest-1600709154662\LIDC-IDRI\LIDC-IDRI-0005\01-01-2000-NA-NA-42125\3000548.000000-NA-86225\1-049.png,raster,high
