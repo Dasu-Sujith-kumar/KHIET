@@ -1,0 +1,4 @@
+mode,metadata_tamper_suite__missing_metadata_hmac,metadata_tamper_suite__tamper_threat_level,metadata_tamper_suite__tamper_profile_rounds,metadata_tamper_suite__tamper_nonce_salt_b64,metadata_tamper_suite__add_extra_field,metadata_tamper_suite__tamper_salt_b64,metadata_tamper_suite__tamper_image_sha256_b64,metadata_tamper_suite__tamper_working_shape,metadata_tamper_suite__tamper_dtype,metadata_tamper_suite__tamper_chaos_seed
+passphrase_only,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0
+x25519_only,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0
+hybrid,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0
