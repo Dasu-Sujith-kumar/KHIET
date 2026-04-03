@@ -161,6 +161,7 @@ def encrypt_array_adaptive(
     recipient_public_key_pem: bytes | None = None,
     fixed_salt: bytes | None = None,
     fixed_nonce_salt: bytes | None = None,
+    shared_secret_override: bytes | None = None,
 ) -> tuple[bytes, dict[str, Any]]:
     """
     Encrypt an in-memory image array with adaptive profile selection.
@@ -169,8 +170,10 @@ def encrypt_array_adaptive(
     ``security_context`` is persisted to metadata for research traceability.
     """
 
-    if passphrase is None and recipient_public_key_pem is None:
-        raise ValueError("Provide passphrase and/or recipient_public_key_pem.")
+    if passphrase is None and recipient_public_key_pem is None and shared_secret_override is None:
+        raise ValueError("Provide passphrase, recipient_public_key_pem, and/or shared_secret_override.")
+    if recipient_public_key_pem is not None and shared_secret_override is not None:
+        raise ValueError("Provide either recipient_public_key_pem or shared_secret_override, not both.")
 
     classifier = SensitivityClassifier()
     classification = classifier.classify(image)
@@ -181,7 +184,10 @@ def encrypt_array_adaptive(
     )
 
     image_digest = image_sha256_digest(image)
-    shared_secret, ephemeral_public_key_pem_b64 = _derive_shared_secret(recipient_public_key_pem)
+    shared_secret = shared_secret_override
+    ephemeral_public_key_pem_b64 = None
+    if shared_secret is None:
+        shared_secret, ephemeral_public_key_pem_b64 = _derive_shared_secret(recipient_public_key_pem)
 
     salt = fixed_salt if fixed_salt is not None else generate_kdf_salt()
     if len(salt) < 8:

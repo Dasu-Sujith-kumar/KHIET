@@ -4,3 +4,7 @@ cryptography
 onnxruntime
 streamlit
 Pillow
+matplotlib
+pandas
+scikit-learn
+pydicom

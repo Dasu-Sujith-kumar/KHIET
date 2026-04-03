@@ -62,6 +62,20 @@ def generate_keys(
     return private_pem, public_pem
 
 
+def derive_x25519_shared_secret(*, private_key_pem: bytes, peer_public_key_pem: bytes) -> bytes:
+    """Derive an X25519 shared secret from PEM-encoded keys."""
+
+    private_key = serialization.load_pem_private_key(private_key_pem, password=None)
+    if not isinstance(private_key, x25519.X25519PrivateKey):
+        raise TypeError("private_key_pem must be an X25519 private key.")
+
+    peer_public = serialization.load_pem_public_key(peer_public_key_pem)
+    if not isinstance(peer_public, x25519.X25519PublicKey):
+        raise TypeError("peer_public_key_pem must be an X25519 public key.")
+
+    return private_key.exchange(peer_public)
+
+
 def wrap_key(master_key: bytes, recipient_public_key_pem: bytes) -> dict[str, str]:
     """Wrap a symmetric key for a recipient public key."""
 
@@ -93,19 +107,14 @@ def wrap_key(master_key: bytes, recipient_public_key_pem: bytes) -> dict[str, st
 def unwrap_key(payload: dict[str, Any], recipient_private_key_pem: bytes) -> bytes:
     """Recover a wrapped symmetric key using recipient private key."""
 
-    recipient_private = serialization.load_pem_private_key(recipient_private_key_pem, password=None)
-    if not isinstance(recipient_private, x25519.X25519PrivateKey):
-        raise TypeError("recipient_private_key_pem must be an X25519 private key.")
-
     ephemeral_public_pem = _b64d(str(payload["ephemeral_public_key_pem_b64"]))
     salt = _b64d(str(payload["salt_b64"]))
     nonce = _b64d(str(payload["nonce_b64"]))
     wrapped = _b64d(str(payload["wrapped_key_b64"]))
 
-    ephemeral_public = serialization.load_pem_public_key(ephemeral_public_pem)
-    if not isinstance(ephemeral_public, x25519.X25519PublicKey):
-        raise TypeError("Payload ephemeral public key is not X25519.")
-
-    shared_secret = recipient_private.exchange(ephemeral_public)
+    shared_secret = derive_x25519_shared_secret(
+        private_key_pem=recipient_private_key_pem,
+        peer_public_key_pem=ephemeral_public_pem,
+    )
     wrap_key_material = _derive_wrap_key(shared_secret, salt)
     return AESGCM(wrap_key_material).decrypt(nonce, wrapped, None)

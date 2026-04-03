@@ -1,56 +1,61 @@
 # Future Changes Roadmap
 
-Status snapshot as of 2026-03-08.
+Status snapshot as of 2026-04-02.
 
 ## Completed in the Current Codebase
 
-These items are already implemented and available in the project.
+These items are already implemented and available now.
 
 - [x] Domain-separated key derivation (`K1..K4`)
 - [x] Image-bound digest context (`SHA-256(image || shape || dtype)`)
 - [x] Optional X25519 key-exchange modes
 - [x] Nonce derivation hardening using dedicated nonce key (`K2`)
 - [x] Metadata threat-model and claims-boundary fields
-- [x] Evaluation and ablation runner with attack simulations
+- [x] Single-image evaluation and ablation runner
+- [x] Dataset-level batch attack simulation and HTML reporting
+- [x] ML-backed adaptive layer using a finetuned Random Forest with heuristic fallback
+- [x] Medical DICOM handling and PNG export for adaptive-model training
+- [x] Finetuning report graphs and ML-backed pipeline rerun outputs
 
 ## Not Done Yet and Still Needed
 
-These items are not completed yet and are still needed if the goal is a stronger publication.
+These items are still open if the goal is a stronger publication.
 
-- [ ] Multi-image benchmark harness with repeated runs and confidence intervals
-- [ ] External baseline ingest for direct comparison with 3-5 recent papers
-- [ ] Formal security-game appendix draft (for example, IND-CCA style mapping)
-- [ ] Reproducibility package with fixed seeds, dataset manifest, and environment lock file
+- [ ] Multi-run benchmark harness with repeated runs and confidence intervals
+- [ ] External baseline ingest for direct comparison with recent papers
+- [ ] Formal security-game appendix or reduction-style claim mapping
+- [ ] Reproducibility package with fixed seeds, environment lock file, and scripted reruns
 - [ ] CPU/GPU runtime profiling for a scalability section
+- [ ] Confidence-aware adaptive policy instead of simple threat overrides
+- [ ] Stronger semantic/privacy features for the adaptive model
+- [ ] Series-aware medical splitting or repeated cross-validation to avoid optimistic results
 
-## Needed to Make This Strong and Publishable
+## Needed to Make This Stronger and More Defendable
 
-These are the concrete gaps that still separate the current project from a stronger paper.
-
-- [ ] Run evaluation on a real benchmark set instead of only smoke-style examples
-- [ ] Compare against multiple recent hybrid image-encryption baselines in one reproducible table
-- [ ] Add a clear formal security-analysis section that maps every claim to a standard primitive
-- [ ] Upgrade the adaptive layer if the paper wants to claim meaningful AI assistance
-- [ ] Add reproducible experiment packaging so reviewers can repeat the results
-- [ ] Add a paper-ready narrative explaining what the chaos layer does and does not contribute
-- [ ] Document limitations honestly so the work is framed as security engineering, not a new cipher claim
+- [ ] Compare the ML-backed adaptive pipeline against multiple recent hybrid image-encryption baselines
+- [ ] Report repeated benchmark results, not only one held-out split
+- [ ] Show ablation between heuristic adaptive mode and ML adaptive mode
+- [ ] Tighten the adaptive claim boundary with confidence, fallback, and better labels
+- [ ] Add a formal security-analysis section that maps every claim to a standard primitive
+- [ ] Package the whole experiment so reviewers can rerun it easily
+- [ ] Keep the chaos layer positioned as reversible preprocessing and diffusion, not as a new primitive
 
 ## Recommended Order of Next Work
 
 If the goal is publication strength, the next work should be done in this order:
 
-1. Build the multi-image benchmark harness.
-2. Add external baseline comparison tables.
-3. Write the formal security-analysis appendix.
-4. Strengthen the adaptive layer or narrow its claim boundary.
-5. Package reproducibility artifacts.
-6. Add scalability profiling.
-7. Convert the results into a paper-ready comparison and limitations section.
+1. Add external baseline comparison tables.
+2. Run repeated benchmark experiments with confidence intervals.
+3. Add heuristic-vs-ML adaptive ablation and confidence-aware policy logic.
+4. Improve the adaptive model with better labels and semantic/privacy features.
+5. Write the formal security-analysis appendix.
+6. Package reproducibility artifacts.
+7. Add scalability profiling.
 
 ## Honest Status Summary
 
-The core security-engineering hardening work is done.
+The core security-engineering work is done.
 
-The publication-strength work is not done yet.
+The ML adaptive layer is also now done in a practical, working form.
 
-That means the project is already strong as an implementation, but still needs broader evaluation, stronger comparison, clearer claim boundaries, and more formal analysis before it can be positioned as a stronger paper.
+The publication-strength work that remains is mostly about broader comparison, stronger evaluation design, tighter adaptive-model analysis, and formal presentation. That means the project is now stronger than the earlier heuristic-only version, but it still needs benchmark depth and comparison discipline before making bigger paper claims.

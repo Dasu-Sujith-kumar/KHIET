@@ -25,6 +25,14 @@ _MODE_COLORS = {
 
 def _fmt(value: Any) -> str:
     if isinstance(value, float) and math.isinf(value):
+        return "inf"
+    if isinstance(value, str) and value in {"Infinity", "+Infinity", "inf", "+inf"}:
+        return "inf"
+    if isinstance(value, str) and value in {"-Infinity", "-inf"}:
+        return "-inf"
+    if isinstance(value, str) and value == "NaN":
+        return "NaN"
+    if isinstance(value, float) and math.isinf(value):
         return "∞"
     if isinstance(value, float) and math.isnan(value):
         return "NaN"

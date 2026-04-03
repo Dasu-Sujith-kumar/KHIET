@@ -1,38 +1,42 @@
 # Hybrid Image Encryption (Security-Engineering Focus)
 
-This project targets a reviewer-resistant security-engineering paper, not a new cipher proposal.
+This project is a security-engineered hybrid image-protection framework, not a new cipher proposal.
 
 ## Claim Boundary
 
 This implementation does **not** claim:
 
-- AES modification
-- A new cryptographic primitive
-- "Chaos stronger than AES"
+- a new cryptographic primitive
+- a modification to AES
+- that chaos is stronger than AES
 
 It **does** claim:
 
-- disciplined domain-separated key derivation
-- image-bound seed/key context
-- optional ephemeral X25519 forward-secrecy mode
-- explicit threat-model mapping with reproducible evaluation
+- domain-separated key derivation
+- image-bound key and nonce context
+- authenticated metadata
+- optional X25519 key exchange
+- an adaptive layer that now uses a finetuned Random Forest model with heuristic fallback
+- reproducible evaluation outputs
 
 ## Hardened Architecture
 
-```
+```text
 Input Image
+  -> Adaptive Classifier (Random Forest or heuristic fallback)
+  -> Security Profile Selection
   -> SHA-256(image || shape || dtype)
-  -> (passphrase and/or ephemeral X25519 shared secret)
+  -> Passphrase and/or X25519 shared secret
   -> HKDF-based master derivation
   -> Domain-separated keys: K_AES, K_Nonce, K_Chaos, K_Metadata
-  -> Keyed chaos permutation (+ policy-driven Arnold map)
+  -> Keyed permutation (+ optional Arnold map)
   -> AES-256-GCM payload encryption
   -> HMAC-authenticated metadata
 ```
 
 ## Key Roles
 
-- `K1` (`aes_key`): AES-GCM payload confidentiality/integrity
+- `K1` (`aes_key`): AES-GCM payload protection
 - `K2` (`nonce_key`): nonce derivation
 - `K3` (`chaos_key`): chaos seed derivation
 - `K4` (`metadata_key`): metadata HMAC authentication
@@ -44,21 +48,48 @@ Nonce derivation:
 ## Key Exchange Modes
 
 - `passphrase_only`
-- `x25519_only` (requires recipient public/private key pair)
+- `x25519_only`
 - `hybrid_passphrase_x25519`
 
-## Security Mapping
+## Adaptive ML Layer
 
-- Payload confidentiality/integrity -> AES-GCM assumptions
-- Key exchange hardness (when enabled) -> X25519 assumptions
-- KDF separation -> HKDF assumptions
-- Metadata tamper detection -> HMAC-SHA256 assumptions
+The current adaptive classifier tries to load:
+
+- `adaptive_rf_report/adaptive_random_forest_cap200.pkl`
+
+If that model is not available, the pipeline falls back to the earlier heuristic classifier so the encryption path still works.
+
+The best current finetuning run used:
+
+- `200` faces
+- `50` forms
+- `200` land-scapes and others
+- `16` manga
+- `200` medical
+
+and achieved:
+
+- `97.60%` holdout accuracy
+- `98.45%` best CV score
 
 ## Installation
 
 ```bash
 pip install -r requirements.txt
 ```
+
+Current requirements include:
+
+- `numpy`
+- `opencv-python`
+- `cryptography`
+- `onnxruntime`
+- `streamlit`
+- `Pillow`
+- `matplotlib`
+- `pandas`
+- `scikit-learn`
+- `pydicom`
 
 ## CLI Usage
 
@@ -91,48 +122,69 @@ streamlit run encrypt_app.py
 streamlit run decrypt_app.py
 ```
 
-The UI now captures publication goal, adversary assumptions, strict-claims mode, and key-exchange mode.
+## Finetune the Adaptive Model
+
+Train the Random Forest and export medical DICOM slices to PNG:
+
+```bash
+python train_adaptive_random_forest.py --data-root sample-images --output-model adaptive_rf_report/adaptive_random_forest_cap200.pkl --report-dir adaptive_rf_report_cap200 --samples-per-class 200 --sampling-strategy up_to_limit --export-medical-png
+```
+
+Generate the finetuning report and graphs:
+
+```bash
+python evaluation/model_finetuning_reporting.py
+```
+
+Main outputs:
+
+- `ML_ADAPTIVE_MODEL_FINETUNING_REPORT.md`
+- `adaptive_model_finetuning_report/`
 
 ## Evaluation / Ablation
 
-Run:
-
-```bash
-python evaluate_pipeline.py sample.png --passphrase "p@ss" --out-dir artifacts/eval
-```
-
-Output includes:
-
-- Entropy
-- Correlation
-- NPCR
-- UACI
-- Key sensitivity
-- PSNR / MSE
-- Execution time
-- Peak memory
-- Bit-flip / noise / cropping attack outcomes
-- Ablation table for `aes_only`, `static_chaos_aes`, `proposed_hardened`
-
-Optional (paper-style plots + deeper attack sweeps):
+Single-image ablation:
 
 ```bash
 python evaluate_pipeline.py sample.png --passphrase "p@ss" --out-dir artifacts/eval --attack-suite high --report
 ```
 
-This additionally writes:
-
-- `artifacts/eval/report/report.html`
-- multiple `.png` charts and `.csv` tables under `artifacts/eval/report/`
-
-## Batch Encryption + Evaluation (100 images × 3 modes)
-
-Create 3 folders (`passphrase_only`, `x25519_only`, `hybrid`) with `.enc` + `.meta.json` pairs and an aggregated report:
+Batch pipeline evaluation:
 
 ```bash
-python batch_run.py datasets/smoke --out-dir artifacts/batch_run --count 100 --passphrase "p@ss" --report
+python batch_run.py pipeline_eval_input_ml_cap200_test --out-dir ml_pipeline_eval_run --count 167 --passphrase "codex-demo-passphrase" --threat balanced --report --overwrite
 ```
 
-Report:
+Main batch outputs:
 
-- `artifacts/batch_run/evaluation/report/report.html`
+- `ml_pipeline_eval_run/evaluation/batch_results.json`
+- `ml_pipeline_eval_run/evaluation/batch_results.csv`
+- `ml_pipeline_eval_run/evaluation/report/report.html`
+
+## Current Batch Rerun Snapshot
+
+The latest ML-backed rerun in this workspace used `167` held-out images and produced `501` evaluated pairs.
+
+Key results:
+
+- exact reconstruction rate: `1.0` in all three modes
+- mean ciphertext entropy: about `7.99953`
+- mean absolute adjacent correlation: about `0.0010`
+- mean chosen-plaintext NPCR: about `99.61%`
+- mean chosen-plaintext UACI: about `33.46%`
+- all implemented ciphertext, replay, credential-mismatch, and metadata-tamper checks had `0.0` decrypt-success rate
+
+## Security Mapping
+
+- payload confidentiality/integrity -> AES-GCM assumptions
+- key exchange hardness -> X25519 assumptions
+- KDF separation -> HKDF assumptions
+- metadata tamper detection -> HMAC-SHA256 assumptions
+
+## Main Reports
+
+- `ML_ADAPTIVE_MODEL_FINETUNING_REPORT.md`
+- `ML_ADAPTIVE_PIPELINE_RERUN_REPORT.md`
+- `ATTACK_SIMULATION_AND_EVALUATION_REPORT.md`
+- `ATTACKS_AND_GRAPH_EXPLANATION.md`
+- `OUTPUT_FOLDERS_AND_RESULTS_INDEX.md`

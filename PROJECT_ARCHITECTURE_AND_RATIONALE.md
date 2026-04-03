@@ -74,15 +74,24 @@ The adaptive layer decides how strong the transform stage should be.
 
 Current behavior:
 
-- The classifier is **heuristic**, not a trained deep model.
-- It computes:
-  - grayscale entropy
-  - edge density
-  - normalized variance
-- It outputs one label:
+- The classifier is now **ML-first**.
+- It tries to load a finetuned Random Forest model and falls back to the earlier heuristic if the model is unavailable.
+- The current model predicts image classes such as:
+  - `faces`
+  - `forms`
+  - `land-scapes and others`
+  - `manga`
+  - `medical`
+- Those classes are then mapped into sensitivity labels:
   - `low`
   - `medium`
   - `high`
+- The learned feature set is still lightweight:
+  - grayscale entropy
+  - edge density
+  - normalized variance
+  - intensity statistics
+  - small resized grayscale pixel features
 
 That label is then combined with a user-selected threat level:
 
@@ -504,17 +513,19 @@ Why this matters:
 
 This section is important if the goal is a real publication.
 
-### 10.1 The Adaptive Classifier Is Heuristic, Not Learned
+### 10.1 The Adaptive Layer Is Learned, but Still Lightweight
 
 Current reality:
 
-- the classifier is based on entropy, edge density, and variance
-- it is not MobileNet, ArcFace, or a trained dataset-backed model in the current pipeline
+- the current pipeline now includes a trained Random Forest adaptive classifier
+- it is dataset-backed, but still based on lightweight grayscale statistics and downsampled pixel features
+- it is not a semantic vision model such as MobileNet, ArcFace, or a privacy-aware document/face/OCR stack
 
 Why this matters:
 
-- "AI-assisted" would be an overstatement unless the code is upgraded
-- reviewers may see it as rule-based policy selection
+- the project can now defensibly claim a lightweight learned adaptive layer
+- but reviewers may still ask whether the labels, features, and evaluation design are strong enough for bigger AI claims
+- the remaining weakness is no longer "there is no learned model"; it is "the learned model is still relatively simple and needs stronger benchmarking"
 
 ### 10.2 No Formal Security Proof
 
@@ -675,13 +686,16 @@ This will make the evaluation more credible.
 
 ### 14.3 Upgrade the Adaptive Layer
 
-If you want to claim AI assistance more seriously, replace or extend the heuristic classifier with:
+The first upgrade is already done: the current pipeline now uses a trained lightweight Random Forest model with heuristic fallback.
 
-- a trained lightweight model
+If you want to make the adaptive contribution stronger from here, extend the current ML layer with:
+
 - dataset-backed labeling
 - ablation comparing heuristic vs learned policy
+- confidence-aware fallback behavior
+- stronger semantic/privacy features such as OCR, document cues, or face-aware signals
 
-Without this, the "AI" angle remains weak.
+Without this next step, the "AI" angle is better than before, but it is still a lightweight adaptive-policy contribution rather than a strong computer-vision contribution.
 
 ### 14.4 Add Formal Security Analysis
 

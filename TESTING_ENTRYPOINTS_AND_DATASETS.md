@@ -8,9 +8,9 @@ This document explains:
 - which files are the main entry points
 - how to test the current implementation
 - which commands to run
-- what input images or datasets are needed
+- which datasets and output folders matter now
 
-This guide is written for the current codebase as of 2026-03-08.
+This guide matches the current codebase as of 2026-04-02.
 
 ## 2. Environment Setup
 
@@ -26,7 +26,7 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Current Python package requirements from `requirements.txt`:
+Current package requirements from `requirements.txt`:
 
 - `numpy`
 - `opencv-python`
@@ -34,6 +34,10 @@ Current Python package requirements from `requirements.txt`:
 - `onnxruntime`
 - `streamlit`
 - `Pillow`
+- `matplotlib`
+- `pandas`
+- `scikit-learn`
+- `pydicom`
 
 ## 3. Main Entry Points
 
@@ -56,7 +60,7 @@ python main.py encrypt --help
 python main.py decrypt --help
 ```
 
-### 3.2 Evaluation Entry Point
+### 3.2 Single-Image Evaluation Entry Point
 
 File:
 
@@ -64,8 +68,8 @@ File:
 
 Purpose:
 
-- run ablation and security-engineering evaluation
-- generate metrics JSON
+- run ablation and security-engineering evaluation on one image
+- generate metrics JSON and optional plots
 
 Check command:
 
@@ -81,12 +85,13 @@ File:
 
 Purpose:
 
-- encrypt a batch of images in 3 modes:
+- encrypt a folder of images in 3 modes:
   - `passphrase_only`
   - `x25519_only`
   - `hybrid`
 - write 3 output folders with `.enc` + `.meta.json` pairs
-- run attacks/evaluation across all pairs and generate an aggregated report
+- run attacks/evaluation across all pairs
+- generate an aggregated HTML report
 
 Check command:
 
@@ -94,7 +99,60 @@ Check command:
 python batch_run.py --help
 ```
 
-### 3.4 Key Management Entry Point
+### 3.4 Adaptive-Model Training Entry Point
+
+File:
+
+- `train_adaptive_random_forest.py`
+
+Purpose:
+
+- train the Random Forest adaptive classifier
+- balance or cap samples per class
+- read `medical/*.dcm` files
+- optionally export medical DICOM slices to PNG
+- write model, manifests, confusion matrix, and metrics
+
+Check command:
+
+```powershell
+python train_adaptive_random_forest.py --help
+```
+
+### 3.5 Finetuning Report Entry Point
+
+File:
+
+- `evaluation/model_finetuning_reporting.py`
+
+Purpose:
+
+- generate the adaptive-model finetuning graphs
+- write `ML_ADAPTIVE_MODEL_FINETUNING_REPORT.md`
+
+Check command:
+
+```powershell
+python evaluation/model_finetuning_reporting.py --help
+```
+
+### 3.6 Batch Report Regeneration Entry Point
+
+File:
+
+- `evaluation/batch_reporting.py`
+
+Purpose:
+
+- regenerate dataset-level tables, graphs, and HTML from `batch_results.json`
+
+Check command:
+
+```powershell
+python evaluation/batch_reporting.py --help
+```
+
+### 3.7 Key Management Entry Point
 
 File:
 
@@ -112,35 +170,17 @@ python key_manager.py --help
 python key_manager.py x25519 --help
 ```
 
-### 3.5 Encryption UI Entry Point
+### 3.8 Streamlit Entry Points
 
-File:
+Files:
 
 - `encrypt_app.py`
+- `decrypt_app.py`
 
-Purpose:
-
-- Streamlit UI for interactive encryption
-
-Start command:
+Start commands:
 
 ```powershell
 streamlit run encrypt_app.py
-```
-
-### 3.6 Decryption UI Entry Point
-
-File:
-
-- `decrypt_app.py`
-
-Purpose:
-
-- Streamlit UI for interactive decryption
-
-Start command:
-
-```powershell
 streamlit run decrypt_app.py
 ```
 
@@ -152,16 +192,16 @@ These are the main callable functions inside the project:
 - `pipeline.encrypt.encrypt_image_adaptive`
 - `pipeline.decrypt.decrypt_array_adaptive`
 - `pipeline.decrypt.decrypt_image_adaptive`
+- `adaptive.classifier.SensitivityClassifier.classify`
+- `batch_run.run`
 - `evaluate_pipeline.run`
 - `key_manager.create_x25519_keypair`
 
-These are useful if you want to integrate the project into another script later.
+## 5. Datasets and Input Folders That Matter Now
 
-## 5. Minimum Input Needed to Run the Project
+### 5.1 Minimal Runtime Input
 
-For the current codebase, the minimum dataset requirement is simple:
-
-- at least one readable image file
+For encryption/decryption testing, one readable image file is enough.
 
 Supported practical input formats:
 
@@ -171,11 +211,41 @@ Supported practical input formats:
 - `.bmp`
 - `.webp`
 
-For quick testing, the repository already contains a usable sample image:
+Quick smoke-test image already in the workspace:
 
 - `artifacts\eval_smoke\input.png`
 
-So for smoke testing, you do **not** need to download a dataset first.
+### 5.2 Adaptive-Model Training Dataset
+
+Main training root:
+
+- `sample-images\`
+
+Expected structure:
+
+- one top-level folder per class
+- current classes include:
+  - `faces`
+  - `forms`
+  - `land-scapes and others`
+  - `manga`
+  - `medical`
+
+Important note:
+
+- `medical` can contain `.dcm` files instead of raster images
+- the trainer reads those DICOM files directly
+- it can also export them as PNG into `adaptive_rf_report\medical_png_export\`
+
+### 5.3 Held-Out Input Used for the Current ML Pipeline Rerun
+
+Current rerun input folder:
+
+- `pipeline_eval_input_ml_cap200_test\`
+
+This folder contains:
+
+- `167` held-out test images copied from the best finetuning run
 
 ## 6. Quick Start Commands
 
@@ -207,99 +277,69 @@ python key_manager.py x25519 `
   --public artifacts\doc_smoke\pub.pem
 ```
 
-### 6.4 X25519-Only Encryption
+### 6.4 Train the Adaptive Random Forest
 
 ```powershell
-python main.py encrypt `
-  --input artifacts\eval_smoke\input.png `
-  --output artifacts\doc_smoke\x25519.enc `
-  --metadata artifacts\doc_smoke\x25519.meta.json `
-  --recipient-public-key artifacts\doc_smoke\pub.pem
+python train_adaptive_random_forest.py `
+  --data-root sample-images `
+  --output-model adaptive_rf_report\adaptive_random_forest_cap200.pkl `
+  --report-dir adaptive_rf_report_cap200 `
+  --samples-per-class 200 `
+  --sampling-strategy up_to_limit `
+  --export-medical-png
 ```
 
-### 6.5 X25519-Only Decryption
+### 6.5 Generate the Finetuning Report and Graphs
 
 ```powershell
-python main.py decrypt `
-  --input artifacts\doc_smoke\x25519.enc `
-  --output artifacts\doc_smoke\x25519.dec.png `
-  --metadata artifacts\doc_smoke\x25519.meta.json `
-  --recipient-private-key artifacts\doc_smoke\priv.pem
+python evaluation\model_finetuning_reporting.py
 ```
 
-### 6.6 Hybrid Passphrase + X25519 Encryption
+Expected outputs:
+
+- `ML_ADAPTIVE_MODEL_FINETUNING_REPORT.md`
+- `adaptive_model_finetuning_report\`
+
+### 6.6 Batch ML-Backed Pipeline Rerun
 
 ```powershell
-python main.py encrypt `
-  --input artifacts\eval_smoke\input.png `
-  --output artifacts\doc_smoke\hybrid.enc `
-  --metadata artifacts\doc_smoke\hybrid.meta.json `
-  --passphrase p@ss `
-  --recipient-public-key artifacts\doc_smoke\pub.pem
+python batch_run.py pipeline_eval_input_ml_cap200_test `
+  --out-dir ml_pipeline_eval_run `
+  --count 167 `
+  --passphrase codex-demo-passphrase `
+  --threat balanced `
+  --report `
+  --overwrite
 ```
 
-### 6.7 Hybrid Passphrase + X25519 Decryption
+Expected outputs:
 
-```powershell
-python main.py decrypt `
-  --input artifacts\doc_smoke\hybrid.enc `
-  --output artifacts\doc_smoke\hybrid.dec.png `
-  --metadata artifacts\doc_smoke\hybrid.meta.json `
-  --passphrase p@ss `
-  --recipient-private-key artifacts\doc_smoke\priv.pem
-```
-
-### 6.8 Evaluation / Ablation Run
-
-```powershell
-python evaluate_pipeline.py `
-  artifacts\eval_smoke\input.png `
-  --passphrase p@ss `
-  --out-dir artifacts\doc_eval
-```
-
-Expected output file:
-
-- `artifacts\doc_eval\evaluation_results.json`
-
-Optional (deeper attack simulation + paper-style plots):
-
-```powershell
-python evaluate_pipeline.py `
-  artifacts\eval_smoke\input.png `
-  --passphrase p@ss `
-  --out-dir artifacts\doc_eval `
-  --attack-suite high `
-  --report
-```
-
-Expected report:
-
-- `artifacts\doc_eval\report\report.html`
+- `ml_pipeline_eval_run\evaluation\batch_results.json`
+- `ml_pipeline_eval_run\evaluation\batch_results.csv`
+- `ml_pipeline_eval_run\evaluation\report\report.html`
 
 ## 7. What Was Verified in This Workspace
 
-The following command paths were validated successfully in this repository:
+The following paths are already present and usable in this workspace:
 
-- passphrase-only encrypt
-- passphrase-only decrypt
+- CLI encryption/decryption
 - X25519 key generation
-- X25519-only encrypt
-- X25519-only decrypt
-- hybrid encrypt
-- hybrid decrypt
-- evaluation runner
+- single-image evaluation runner
+- Random Forest adaptive-model training outputs
+- finetuning graphs and report
+- ML-backed batch pipeline rerun outputs
 
 ## 8. How to Test the Project Properly
 
-There is currently **no dedicated `pytest` test suite** in the repository.
+There is currently **no dedicated `pytest` suite** in the repository.
 
-So the present testing approach is mainly:
+The current testing approach is mainly:
 
 - CLI smoke testing
 - UI manual testing
 - evaluation-runner validation
-- negative-path security checks
+- batch tamper/attack validation
+- adaptive-model finetuning validation
 
 ### 8.1 Functional Smoke Tests
 
@@ -314,10 +354,38 @@ Success criteria:
 
 - encryption writes `.enc` and `.meta.json`
 - decryption writes a valid image
-- decrypt command returns `"status": "ok"`
+- decrypt returns status `ok`
 - evaluation writes `evaluation_results.json`
 
-### 8.2 Manual UI Tests
+### 8.2 Adaptive-Model Tests
+
+Run these:
+
+1. `train_adaptive_random_forest.py`
+2. `evaluation/model_finetuning_reporting.py`
+
+Success criteria:
+
+- model pickle is written
+- `metrics.json` exists
+- `sample_manifest.csv` exists
+- confusion matrix and feature importances are written
+- finetuning graphs are created
+
+### 8.3 Batch Security-Oriented Tests
+
+Run `batch_run.py` with `--report`.
+
+Success criteria:
+
+- all three mode folders are created
+- `batch_results.json` and `batch_results.csv` are written
+- `report/report.html` is written
+- untampered decryptions are exact
+- attack success rates remain `0.0`
+- metadata tamper success rates remain `0.0`
+
+### 8.4 Manual UI Tests
 
 Start:
 
@@ -334,40 +402,11 @@ Manual checks:
 - verify UI warnings change when key mode changes
 - verify X25519 mode asks for PEM material
 
-### 8.3 Negative and Security-Oriented Tests
+## 9. What the Evaluation Paths Measure
 
-These should also be performed:
+### 9.1 `evaluate_pipeline.py`
 
-#### Wrong Passphrase Test
-
-- encrypt using one passphrase
-- try to decrypt using a different passphrase
-- expected result: decryption fails
-
-#### Wrong Private Key Test
-
-- encrypt in X25519 mode
-- try to decrypt with the wrong private key
-- expected result: decryption fails
-
-#### Metadata Tampering Test
-
-- edit a field in the metadata JSON manually
-- expected result: metadata verification fails
-
-#### Ciphertext Tampering Test
-
-- modify one byte in the `.enc` file
-- expected result: AES-GCM decryption fails
-
-#### Output Integrity Test
-
-- compare original image and decrypted image for a successful round trip
-- expected result: reconstructed image matches the original
-
-## 9. What the Evaluation Runner Measures
-
-The evaluation runner currently produces:
+Produces:
 
 - entropy
 - adjacent correlation
@@ -378,117 +417,31 @@ The evaluation runner currently produces:
 - MSE
 - execution time
 - peak memory
-- bit-flip attack result
-- noise attack result
-- crop attack result
+- basic attack outcomes
 - ablation across:
   - `aes_only`
   - `static_chaos_aes`
   - `proposed_hardened`
 
-When run with `--attack-suite high`, it additionally produces:
+### 9.2 `batch_run.py`
 
-- attack success-rate sweeps (bit flips, byte mutation, noise, truncation, block shuffling)
-- metadata tampering suite (for `proposed_hardened`)
+Produces:
 
-When run with `--report`, it additionally produces:
+- dataset-level exact-match rates
+- per-mode timing
+- ciphertext entropy and correlation
+- chosen-plaintext NPCR/UACI
+- replay and corruption attack rejection
+- wrong-credential rejection
+- metadata-tamper rejection
+- CSV tables, PNG charts, and HTML report
 
-- `report/report.html` plus multiple `.png` charts and `.csv` tables
+Important interpretation note:
 
-Important note:
+- the attack checks test tamper detection and rejection behavior
+- under AES-GCM, decryption failure after tampering is expected
 
-The attack checks currently test **tamper detection/failure behavior**, not graceful recovery. Under AES-GCM, decryption failure after tampering is expected.
-
-## 10. Datasets Needed Right Now
-
-For current development and basic testing:
-
-- one image is enough
-
-For better local testing:
-
-- prepare 5 to 20 images with different characteristics
-
-Recommended local categories:
-
-- smooth low-detail images
-- textured natural scenes
-- portraits
-- high-edge urban images
-- dark and bright images
-
-Suggested local folder structure:
-
-```text
-datasets/
-  smoke/
-    img01.png
-    img02.png
-    img03.png
-  benchmark/
-    natural/
-    portrait/
-    texture/
-```
-
-## 11. Datasets Recommended for Publication-Strength Evaluation
-
-These are not bundled in the repository, but they are good categories to prepare if the project is being turned into a paper:
-
-- a small natural-image benchmark such as Kodak-style image sets
-- a mixed benchmark such as USC-SIPI style image groups
-- an edge/diversity benchmark such as BSDS-style image sets
-- a larger grayscale or steganalysis-style set such as BOSSBase-type data
-- one domain-specific dataset if you want to make claims about medical, biometric, or surveillance scenarios
-
-Important rule:
-
-Only make domain-specific claims if you actually evaluate on domain-specific data.
-
-## 12. What to Check in the Outputs
-
-### 12.1 Encryption Outputs
-
-You should see:
-
-- ciphertext file such as `out.enc`
-- metadata file such as `out.meta.json`
-
-Check metadata for:
-
-- `version`
-- `profile`
-- `threat_level`
-- `key_exchange`
-- `image_sha256_b64`
-- `nonce_strategy`
-- `metadata_hmac`
-
-### 12.2 Decryption Outputs
-
-You should see:
-
-- recovered image file such as `out.dec.png`
-
-Check:
-
-- the image opens correctly
-- the size matches the original image
-- the content matches visually
-
-### 12.3 Evaluation Outputs
-
-You should see:
-
-- `evaluation_results.json`
-
-Check:
-
-- metrics exist for all three variants
-- timing and memory values are present
-- ablation table is populated
-
-## 13. Best Order for Testing
+## 10. Best Order for Testing
 
 Use this order:
 
@@ -497,24 +450,28 @@ Use this order:
 3. Generate X25519 keys.
 4. Run X25519-only smoke test.
 5. Run hybrid smoke test.
-6. Run the evaluation harness.
-7. Run negative-path tamper tests.
-8. Run Streamlit UI tests.
+6. Run the single-image evaluation harness.
+7. Run adaptive-model training.
+8. Generate finetuning graphs.
+9. Run the batch ML-backed pipeline evaluation.
+10. Run Streamlit UI tests if needed.
 
-## 14. Current Gaps in Testing
+## 11. Current Gaps in Testing
 
 The project still needs:
 
 - automated unit tests
-- multi-image regression testing
-- benchmark automation across folders
-- statistical reporting across repeated runs
-- baseline comparison automation against external methods
+- repeated benchmark runs with confidence intervals
+- series-aware medical splits
+- heuristic-vs-ML adaptive ablation inside one scripted benchmark
+- automated external baseline comparison
 
-## 15. Short Honest Summary
+## 12. Short Honest Summary
 
 The project is runnable now from CLI and Streamlit entry points.
 
-The easiest way to test it is to use `artifacts\eval_smoke\input.png` and run the CLI commands in this document.
+For quick smoke tests, `artifacts\eval_smoke\input.png` is enough.
 
-For publication work, one-image smoke testing is not enough. A real benchmark folder and repeated evaluation pipeline still need to be added.
+For adaptive-model work, use `sample-images\`.
+
+For the current ML-backed rerun, use `pipeline_eval_input_ml_cap200_test\`.

@@ -1,21 +1,21 @@
-# Pipeline Flowcharts (Encryption, Decryption, Batch Evaluation)
+# Pipeline Flowcharts (Encryption, Decryption, Finetuning, Batch Evaluation)
 
-This file provides **report-friendly** flowcharts for the current hybrid image-encryption project.
+This file provides report-friendly flowcharts for the current codebase.
 
 ## 1) Encryption Pipeline
 
 ```mermaid
 flowchart TD
   A[Input Image] --> B[Load as uint8 BGR]
-  B --> C[Sensitivity Classifier<br/>(entropy, edge density, variance)]
+  B --> C[Sensitivity Classifier<br/>(Random Forest or heuristic fallback)]
   C --> D[Select Security Profile<br/>(lite / standard / max)]
   B --> E[Image SHA-256 digest<br/>(image || shape || dtype)]
 
-  P[Passphrase (optional)] --> K
-  X[Recipient Public Key (optional)] --> X1[X25519 ECDH<br/>ephemeral shared secret]
+  P[Passphrase optional] --> K
+  X[Recipient Public Key optional] --> X1[X25519 ECDH<br/>shared secret]
   X1 --> K
-  E --> K[Derive Master Key Material<br/>PBKDF2 + HKDF (image-bound)]
-  K --> S[Derive Subkeys (HKDF domain-separated)<br/>K1 AES | K2 nonce | K3 chaos | K4 metadata HMAC]
+  E --> K[Derive Master Key Material<br/>PBKDF2 + HKDF image-bound]
+  K --> S[Derive Subkeys<br/>K1 AES | K2 nonce | K3 chaos | K4 metadata HMAC]
 
   D --> T[Transform Stage]
   S --> T
@@ -24,12 +24,12 @@ flowchart TD
   T2 --> T3[Keyed permutation rounds<br/>(seed from K3)]
 
   S --> N[Nonce derivation<br/>HMAC-SHA256(K2, nonce_salt || context)[:12]]
-  T3 --> G[AES-256-GCM Encrypt (K1, nonce, AAD)]
+  T3 --> G[AES-256-GCM Encrypt]
   N --> G
 
-  C --> M[Metadata assembly<br/>(classification + profile + salts + nonce context + key mode)]
+  C --> M[Metadata assembly<br/>(classification + profile + salts + key mode)]
   D --> M
-  S --> H[Metadata HMAC (K4)]
+  S --> H[Metadata HMAC with K4]
   M --> H
 
   G --> OUT1[Ciphertext .enc]
@@ -46,29 +46,53 @@ flowchart TD
   A --> X{X25519 mode?}
   X -- yes --> X1[Use recipient private key<br/>to derive shared secret]
   X -- no --> K
-  P[Passphrase (optional)] --> K
-  X1 --> K[Re-derive master key (image-bound)]
+  P[Passphrase optional] --> K
+  X1 --> K[Re-derive master key material]
   K --> S[Re-derive subkeys K1..K4]
 
-  S --> V[Verify metadata HMAC (K4)]
+  S --> V[Verify metadata HMAC]
   V --> N[Derive nonce from K2 + nonce_salt + context]
-  N --> G[AES-256-GCM Decrypt (K1)]
+  N --> G[AES-256-GCM Decrypt]
   G --> T3[Inverse keyed permutation]
-  T3 --> T2[Inverse Arnold map (if used)]
-  T2 --> T1[Unpad from square (if used)]
+  T3 --> T2[Inverse Arnold map if used]
+  T2 --> T1[Unpad from square if used]
   T1 --> OUT[Recovered image]
 ```
 
-## 3) Batch Run (100 images × 3 modes)
+## 3) Adaptive Model Finetuning Pipeline
 
-`batch_run.py` runs the same encryption pipeline in three key modes and then evaluates every output:
+```mermaid
+flowchart TD
+  D[sample-images root] --> C1[Discover class folders]
+  C1 --> C2[Collect raster images]
+  C1 --> C3[Collect medical DICOM files]
+  C3 --> C4[Optional DICOM to PNG export]
+  C2 --> S[Build sample plan<br/>balanced or up_to_limit]
+  C4 --> S
+  S --> F[Extract grayscale stats + resized pixel features]
+  F --> T[Train/Test split]
+  T --> RF[Random Forest + grid search]
+  RF --> O1[Model pickle]
+  RF --> O2[metrics.json]
+  RF --> O3[confusion_matrix.csv]
+  RF --> O4[feature_importances.csv]
+  RF --> O5[sample_manifest.csv]
+  O2 --> R[evaluation/model_finetuning_reporting.py]
+  O3 --> R
+  O4 --> R
+  R --> G[Finetuning graphs + Markdown report]
+```
+
+## 4) Batch Run (N Images x 3 Modes)
+
+`batch_run.py` runs the same encryption pipeline in three key modes and then evaluates every output.
 
 ```mermaid
 flowchart TD
   D[Input image folder] --> L[List images]
   L --> S[Select N images]
 
-  S --> K[Create or load X25519 keypair<br/>(reused for x25519_only + hybrid)]
+  S --> K[Create or load X25519 keypair]
 
   S --> E1[Encrypt passphrase_only]
   K --> E2[Encrypt x25519_only]
@@ -88,8 +112,12 @@ flowchart TD
   EV --> R2[Aggregated HTML report + charts]
 ```
 
-## Notes (what the attack graphs mean)
+Current workspace note:
 
-- Many simulated attacks intentionally produce **decryption failure** under AES-GCM (this is expected).
-- So the most meaningful visualization is often **detection rate** (i.e., `1 - decrypt_success_rate`).
+- the latest ML-backed rerun used `167` held-out images and produced `501` evaluated pairs
 
+## Notes
+
+- The classifier is now ML-first, but the pipeline still works if it falls back to the heuristic classifier.
+- Many simulated attacks intentionally produce decryption failure under AES-GCM. That is expected secure behavior.
+- The most meaningful batch attack visualization is usually detection rate, not graceful recovery rate.

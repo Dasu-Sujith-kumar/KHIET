@@ -7,12 +7,11 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
-from cryptography.hazmat.primitives import serialization
-from cryptography.hazmat.primitives.asymmetric import x25519
 
 from chaso.arnold_map import inverse_arnold_map
 from chaso.keyed_permutation import inverse_adaptive_permute
 from crypto.aes_gcm import decrypt_aes, derive_gcm_nonce
+from crypto.ecc_keywrap import derive_x25519_shared_secret
 from crypto.key_schedule import derive_master_key_material, derive_subkeys, master_key_from_passphrase
 from crypto.metadata_auth import verify_metadata
 from pipeline.adaptive_common import b64_decode_bytes, b64_encode_bytes, save_image, unpad_from_square
@@ -59,19 +58,15 @@ def _shared_secret_from_metadata(
     if recipient_private_key_pem is None:
         raise ValueError("Metadata requires X25519 decryption, but recipient_private_key_pem was not provided.")
 
-    private_key = serialization.load_pem_private_key(recipient_private_key_pem, password=None)
-    if not isinstance(private_key, x25519.X25519PrivateKey):
-        raise TypeError("recipient_private_key_pem must be an X25519 private key.")
-
     ephemeral_b64 = key_exchange.get("ephemeral_public_key_pem_b64")
     if not ephemeral_b64:
         raise ValueError("Missing ephemeral public key metadata for X25519 mode.")
 
     ephemeral_public_pem = b64_decode_bytes(str(ephemeral_b64))
-    ephemeral_public = serialization.load_pem_public_key(ephemeral_public_pem)
-    if not isinstance(ephemeral_public, x25519.X25519PublicKey):
-        raise TypeError("Metadata ephemeral key is not X25519.")
-    return private_key.exchange(ephemeral_public)
+    return derive_x25519_shared_secret(
+        private_key_pem=recipient_private_key_pem,
+        peer_public_key_pem=ephemeral_public_pem,
+    )
 
 
 def _verify_metadata(metadata: dict[str, Any], metadata_key: bytes) -> None:
@@ -171,8 +166,8 @@ def decrypt_array_adaptive(
         original_width = int(metadata["original_width"])
         restored = unpad_from_square(restored, original_height, original_width)
 
-    restored_u8 = np.clip(restored, 0, 255).astype(np.uint8, copy=False)
-    return restored_u8, metadata
+    restored_array = restored.astype(dtype, copy=False)
+    return np.ascontiguousarray(restored_array), metadata
 
 
 def decrypt_image_adaptive(
