@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 import time
 import tracemalloc
@@ -21,7 +22,16 @@ from chaso.arnold_map import arnold_map, inverse_arnold_map
 from chaso.keyed_permutation import adaptive_permute, derive_chaos_seed, inverse_adaptive_permute
 from crypto.aes_gcm import decrypt_aes, derive_gcm_nonce, encrypt_aes
 from crypto.key_schedule import derive_master_key_material, derive_subkeys, generate_kdf_salt
-from evaluation.attacks import add_gaussian_noise_to_bytes, crop_image_center, flip_random_bit
+from evaluation.attacks import (
+    add_gaussian_noise_to_bytes,
+    crop_image_center,
+    flip_random_bit,
+    flip_random_bits,
+    mutate_random_bytes,
+    shuffle_blocks,
+    truncate_bytes,
+)
+from evaluation.json_utils import dumps_strict_json
 from evaluation.metrics import adjacent_correlation, key_sensitivity, mse, npcr, psnr, shannon_entropy, uaci
 from pipeline.adaptive_common import image_sha256_digest, pad_to_square, unpad_from_square
 from pipeline.decrypt import decrypt_array_adaptive
@@ -71,13 +81,7 @@ def _cipher_npcr_uaci(cipher_a: bytes, cipher_b: bytes) -> tuple[float, float]:
 
 
 def _cropped_ciphertext(ciphertext: bytes, keep_ratio: float = 0.8) -> bytes:
-    if not (0.0 < keep_ratio <= 1.0):
-        raise ValueError("keep_ratio must be in (0, 1].")
-    if not ciphertext:
-        return ciphertext
-    keep = max(1, int(len(ciphertext) * keep_ratio))
-    start = (len(ciphertext) - keep) // 2
-    return ciphertext[start : start + keep]
+    return truncate_bytes(ciphertext, keep_ratio, mode="center")
 
 
 def _measure_run(fn: Callable[[], dict]) -> dict:
@@ -90,6 +94,154 @@ def _measure_run(fn: Callable[[], dict]) -> dict:
     result["execution_time_ms"] = round(elapsed_ms, 6)
     result["peak_memory_kib"] = round(peak / 1024.0, 6)
     return result
+
+
+def _attack_basic(ciphertext: bytes, decrypt_test: Callable[[bytes], bool]) -> dict[str, bool]:
+    return {
+        "bit_flip_decrypt_success": bool(decrypt_test(flip_random_bit(ciphertext, seed=11))),
+        "noise_decrypt_success": bool(decrypt_test(add_gaussian_noise_to_bytes(ciphertext, sigma=8.0, seed=23))),
+        "crop_decrypt_success": bool(decrypt_test(_cropped_ciphertext(ciphertext, keep_ratio=0.8))),
+    }
+
+
+def _attack_sweep_rates(
+    *,
+    ciphertext: bytes,
+    decrypt_test: Callable[[bytes], bool],
+    trials: int,
+    seed_base: int,
+) -> dict[str, list[dict[str, float | int]]]:
+    """Return decryption success rates for multiple tamper families."""
+
+    trials = max(1, int(trials))
+    seed_base = int(seed_base)
+
+    def sweep_int(
+        label: str,
+        values: list[int],
+        mutate: Callable[[bytes, int, int], bytes],
+    ) -> list[dict[str, float | int]]:
+        out: list[dict[str, float | int]] = []
+        for idx, val in enumerate(values):
+            successes = 0
+            for t in range(trials):
+                mutated = mutate(ciphertext, val, seed_base + idx * 10_000 + t)
+                if decrypt_test(mutated):
+                    successes += 1
+            out.append(
+                {
+                    label: int(val),
+                    "trials": int(trials),
+                    "successes": int(successes),
+                    "success_rate": round(successes / trials, 6),
+                }
+            )
+        return out
+
+    def sweep_float(
+        label: str,
+        values: list[float],
+        mutate: Callable[[bytes, float, int], bytes],
+    ) -> list[dict[str, float | int]]:
+        out: list[dict[str, float | int]] = []
+        for idx, val in enumerate(values):
+            successes = 0
+            for t in range(trials):
+                mutated = mutate(ciphertext, float(val), seed_base + idx * 10_000 + t)
+                if decrypt_test(mutated):
+                    successes += 1
+            out.append(
+                {
+                    label: float(val),
+                    "trials": int(trials),
+                    "successes": int(successes),
+                    "success_rate": round(successes / trials, 6),
+                }
+            )
+        return out
+
+    bit_flips = sweep_int(
+        "n_bits",
+        [1, 2, 4, 8, 16, 32, 64],
+        lambda data, n, seed: flip_random_bits(data, n_bits=n, seed=seed),
+    )
+    byte_mutations = sweep_int(
+        "n_bytes",
+        [1, 2, 4, 8, 16, 32, 64],
+        lambda data, n, seed: mutate_random_bytes(data, n_bytes=n, seed=seed),
+    )
+    block_shuffle = sweep_int(
+        "swaps",
+        [1, 2, 4, 8],
+        lambda data, swaps, seed: shuffle_blocks(data, block_size=16, swaps=swaps, seed=seed),
+    )
+    gaussian_noise = sweep_float(
+        "sigma",
+        [1.0, 2.0, 4.0, 8.0, 16.0, 32.0],
+        lambda data, sigma, seed: add_gaussian_noise_to_bytes(data, sigma=sigma, seed=seed),
+    )
+    truncation: list[dict[str, float | int]] = []
+    for ratio in [0.99, 0.95, 0.9, 0.8, 0.6, 0.4]:
+        ok = bool(decrypt_test(truncate_bytes(ciphertext, keep_ratio=ratio, mode="center")))
+        truncation.append(
+            {
+                "keep_ratio": float(ratio),
+                "trials": 1,
+                "successes": int(ok),
+                "success_rate": float(1.0 if ok else 0.0),
+            }
+        )
+
+    return {
+        "bit_flip_bits": bit_flips,
+        "byte_mutation": byte_mutations,
+        "block_shuffle": block_shuffle,
+        "gaussian_noise": gaussian_noise,
+        "truncation": truncation,
+    }
+
+
+def _metadata_tamper_suite(ciphertext: bytes, metadata: dict[str, Any], passphrase: str) -> dict[str, bool]:
+    """Attempt decryption under metadata/credential tampering scenarios."""
+
+    def try_decrypt(candidate_metadata: dict[str, Any], candidate_passphrase: str | None) -> bool:
+        try:
+            decrypt_array_adaptive(
+                ciphertext=ciphertext,
+                metadata=candidate_metadata,
+                passphrase=candidate_passphrase,
+            )
+            return True
+        except Exception:  # noqa: BLE001
+            return False
+
+    cases: dict[str, bool] = {}
+    cases["wrong_passphrase"] = try_decrypt(copy.deepcopy(metadata), passphrase + "#")
+
+    removed_hmac = copy.deepcopy(metadata)
+    removed_hmac.pop("metadata_hmac", None)
+    cases["missing_metadata_hmac"] = try_decrypt(removed_hmac, passphrase)
+
+    threat_tamper = copy.deepcopy(metadata)
+    threat_tamper["threat_level"] = "hardened" if str(metadata.get("threat_level", "")) != "hardened" else "speed"
+    cases["tamper_threat_level"] = try_decrypt(threat_tamper, passphrase)
+
+    profile_tamper = copy.deepcopy(metadata)
+    if isinstance(profile_tamper.get("profile"), dict) and "permutation_rounds" in profile_tamper["profile"]:
+        profile_tamper["profile"]["permutation_rounds"] = int(profile_tamper["profile"]["permutation_rounds"]) + 1
+    cases["tamper_profile_rounds"] = try_decrypt(profile_tamper, passphrase)
+
+    nonce_salt_tamper = copy.deepcopy(metadata)
+    if "nonce_salt_b64" in nonce_salt_tamper and isinstance(nonce_salt_tamper["nonce_salt_b64"], str):
+        s = nonce_salt_tamper["nonce_salt_b64"]
+        nonce_salt_tamper["nonce_salt_b64"] = (s[:-1] + ("A" if s[-1:] != "A" else "B")) if s else "A"
+    cases["tamper_nonce_salt_b64"] = try_decrypt(nonce_salt_tamper, passphrase)
+
+    extra_field = copy.deepcopy(metadata)
+    extra_field["evil_extra_field"] = "1"
+    cases["add_extra_field"] = try_decrypt(extra_field, passphrase)
+
+    return cases
 
 
 def _variant_aes_only(image: np.ndarray, passphrase: str, fixed_salt: bytes, fixed_nonce_salt: bytes) -> dict:
@@ -223,6 +375,7 @@ def _variant_proposed_hardened(
         "ciphertext": ciphertext,
         "decrypted": decrypted,
         "decrypt_test": decrypt_test,
+        "metadata": metadata,
     }
 
 
@@ -248,7 +401,10 @@ def _build_metrics_block(
     passphrase: str,
     fixed_salt: bytes,
     fixed_nonce_salt: bytes,
-) -> dict[str, float | dict]:
+    *,
+    attack_suite: str = "basic",
+    attack_trials: int = 25,
+) -> dict[str, Any]:
     variant = str(variant_result["variant"])
     ciphertext: bytes = variant_result["ciphertext"]
     decrypted: np.ndarray = variant_result["decrypted"]
@@ -275,13 +431,39 @@ def _build_metrics_block(
     )
     key_sens = key_sensitivity(ciphertext, cipher_alt_key)
 
-    bitflip_ok = decrypt_test(flip_random_bit(ciphertext, seed=11))
-    noise_ok = decrypt_test(add_gaussian_noise_to_bytes(ciphertext, sigma=8.0, seed=23))
-    crop_ok = decrypt_test(_cropped_ciphertext(ciphertext, keep_ratio=0.8))
+    attack_resilience = _attack_basic(ciphertext, decrypt_test)
+    attack_details: dict[str, Any] | None = None
+    if attack_suite == "high":
+        attack_details = {
+            "suite": "high",
+            "trials_per_point": int(max(1, attack_trials)),
+            "sweeps": _attack_sweep_rates(
+                ciphertext=ciphertext,
+                decrypt_test=decrypt_test,
+                trials=attack_trials,
+                seed_base=20260308,
+            ),
+        }
+
+        if variant == "aes_only":
+            wrong_variant = _variant_aes_only(image, alt_passphrase, fixed_salt, fixed_nonce_salt)
+        elif variant == "static_chaos_aes":
+            wrong_variant = _variant_static_chaos_aes(image, alt_passphrase, fixed_salt, fixed_nonce_salt)
+        elif variant == "proposed_hardened":
+            wrong_variant = _variant_proposed_hardened(image, alt_passphrase, fixed_salt, fixed_nonce_salt)
+        else:
+            wrong_variant = None
+
+        if wrong_variant is not None:
+            attack_details["wrong_credentials_decrypt_success"] = bool(wrong_variant["decrypt_test"](ciphertext))
+
+        metadata = variant_result.get("metadata")
+        if isinstance(metadata, dict):
+            attack_details["metadata_tamper_suite"] = _metadata_tamper_suite(ciphertext, metadata, passphrase)
 
     cropped_img = crop_image_center(image, crop_ratio=0.8)
 
-    return {
+    record: dict[str, Any] = {
         "entropy_cipher": round(_bytes_entropy(ciphertext), 6),
         "adj_correlation_cipher": round(_bytes_adj_corr(ciphertext), 6),
         "npcr": round(npcr_val, 6),
@@ -291,15 +473,24 @@ def _build_metrics_block(
         "mse": round(mse(image, decrypted), 6),
         "cipher_size_bytes": len(ciphertext),
         "cropped_input_shape": [int(x) for x in cropped_img.shape],
-        "attack_resilience": {
-            "bit_flip_decrypt_success": bool(bitflip_ok),
-            "noise_decrypt_success": bool(noise_ok),
-            "crop_decrypt_success": bool(crop_ok),
-        },
+        "attack_resilience": attack_resilience,
     }
 
+    if attack_details is not None:
+        record["attack_simulation"] = attack_details
 
-def run(image_path: str, passphrase: str, out_dir: str) -> dict[str, Any]:
+    return record
+
+
+def run(
+    image_path: str,
+    passphrase: str,
+    out_dir: str,
+    *,
+    attack_suite: str = "basic",
+    attack_trials: int = 25,
+    generate_report: bool = False,
+) -> dict[str, Any]:
     output_root = Path(out_dir)
     output_root.mkdir(parents=True, exist_ok=True)
     image = _load_image(image_path)
@@ -326,7 +517,15 @@ def run(image_path: str, passphrase: str, out_dir: str) -> dict[str, Any]:
 
     for name, run_fn in variants.items():
         measured = _measure_run(run_fn)
-        metrics = _build_metrics_block(measured, image, passphrase, fixed_salt, fixed_nonce_salt)
+        metrics = _build_metrics_block(
+            measured,
+            image,
+            passphrase,
+            fixed_salt,
+            fixed_nonce_salt,
+            attack_suite=attack_suite,
+            attack_trials=attack_trials,
+        )
         variant_record = {
             "variant": name,
             "execution_time_ms": measured["execution_time_ms"],
@@ -346,7 +545,16 @@ def run(image_path: str, passphrase: str, out_dir: str) -> dict[str, Any]:
         )
 
     out_path = output_root / "evaluation_results.json"
-    out_path.write_text(json.dumps(results, indent=2), encoding="utf-8")
+    out_path.write_text(dumps_strict_json(results, indent=2), encoding="utf-8")
+
+    if generate_report:
+        try:
+            from evaluation.reporting import write_evaluation_report
+
+            write_evaluation_report(results, output_root)
+        except Exception as exc:  # noqa: BLE001
+            results.setdefault("report_error", str(exc))
+        out_path.write_text(dumps_strict_json(results, indent=2), encoding="utf-8")
     return results
 
 
@@ -355,13 +563,37 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument("image_path", help="Input image file path.")
     parser.add_argument("--passphrase", default="change-me", help="Passphrase used for evaluation runs.")
     parser.add_argument("--out-dir", default="artifacts/eval", help="Directory to write evaluation outputs.")
+    parser.add_argument(
+        "--attack-suite",
+        default="basic",
+        choices=["basic", "high"],
+        help="Attack simulation depth. 'high' runs sweeps and metadata-tamper tests.",
+    )
+    parser.add_argument(
+        "--attack-trials",
+        type=int,
+        default=25,
+        help="Trials per sweep point (only used when --attack-suite high).",
+    )
+    parser.add_argument(
+        "--report",
+        action="store_true",
+        help="Also generate an HTML report with plots/tables under out-dir/report/.",
+    )
     return parser
 
 
 def main() -> None:
     parser = _build_parser()
     args = parser.parse_args()
-    results = run(args.image_path, args.passphrase, args.out_dir)
+    results = run(
+        args.image_path,
+        args.passphrase,
+        args.out_dir,
+        attack_suite=str(args.attack_suite),
+        attack_trials=int(args.attack_trials),
+        generate_report=bool(args.report),
+    )
     print(json.dumps(results, indent=2))
 
 

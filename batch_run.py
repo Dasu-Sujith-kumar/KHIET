@@ -18,7 +18,7 @@ from typing import Any, Callable
 import numpy as np
 import pandas as pd
 
-from crypto.ecc_keywrap import generate_keys
+from crypto.ecc_keywrap import derive_x25519_shared_secret, generate_keys
 from evaluation.attacks import (
     add_gaussian_noise_to_bytes,
     flip_random_bit,
@@ -26,8 +26,9 @@ from evaluation.attacks import (
     shuffle_blocks,
     truncate_bytes,
 )
+from evaluation.json_utils import dumps_strict_json
 from evaluation.metrics import adjacent_correlation, mse, npcr, psnr, shannon_entropy, uaci
-from pipeline.adaptive_common import load_image
+from pipeline.adaptive_common import b64_decode_bytes, load_image
 from pipeline.decrypt import decrypt_array_adaptive
 from pipeline.encrypt import encrypt_array_adaptive, encrypt_image_adaptive
 from pipeline.metadata_io import read_metadata
@@ -199,6 +200,9 @@ def _encrypt_for_mode(
     recipient_public_key_pem: bytes,
     threat_level: str,
     forced_profile: str | None,
+    fixed_salt: bytes | None = None,
+    fixed_nonce_salt: bytes | None = None,
+    shared_secret_override: bytes | None = None,
 ) -> bytes:
     if mode == "passphrase_only":
         ciphertext, _ = encrypt_array_adaptive(
@@ -207,6 +211,9 @@ def _encrypt_for_mode(
             threat_level=threat_level,
             forced_profile=forced_profile,
             recipient_public_key_pem=None,
+            fixed_salt=fixed_salt,
+            fixed_nonce_salt=fixed_nonce_salt,
+            shared_secret_override=shared_secret_override,
         )
         return ciphertext
     if mode == "x25519_only":
@@ -215,7 +222,10 @@ def _encrypt_for_mode(
             passphrase=None,
             threat_level=threat_level,
             forced_profile=forced_profile,
-            recipient_public_key_pem=recipient_public_key_pem,
+            recipient_public_key_pem=recipient_public_key_pem if shared_secret_override is None else None,
+            fixed_salt=fixed_salt,
+            fixed_nonce_salt=fixed_nonce_salt,
+            shared_secret_override=shared_secret_override,
         )
         return ciphertext
     if mode == "hybrid":
@@ -224,10 +234,29 @@ def _encrypt_for_mode(
             passphrase=passphrase,
             threat_level=threat_level,
             forced_profile=forced_profile,
-            recipient_public_key_pem=recipient_public_key_pem,
+            recipient_public_key_pem=recipient_public_key_pem if shared_secret_override is None else None,
+            fixed_salt=fixed_salt,
+            fixed_nonce_salt=fixed_nonce_salt,
+            shared_secret_override=shared_secret_override,
         )
         return ciphertext
     raise ValueError(f"Unknown mode: {mode}")
+
+
+def _shared_secret_for_metadata(metadata: dict[str, Any], recipient_private_key_pem: bytes) -> bytes | None:
+    key_exchange = metadata.get("key_exchange", {}) or {}
+    mode = str(key_exchange.get("mode", "passphrase_only"))
+    if mode not in {"x25519_only", "hybrid_passphrase_x25519"}:
+        return None
+
+    ephemeral_b64 = key_exchange.get("ephemeral_public_key_pem_b64")
+    if not ephemeral_b64:
+        raise ValueError("Missing ephemeral public key metadata for X25519 mode.")
+
+    return derive_x25519_shared_secret(
+        private_key_pem=recipient_private_key_pem,
+        peer_public_key_pem=b64_decode_bytes(str(ephemeral_b64)),
+    )
 
 
 def _encrypt_one(
@@ -343,6 +372,10 @@ def _evaluate_one(
         if isinstance(profile_block, dict) and "name" in profile_block:
             forced_profile = str(profile_block["name"])
 
+        fixed_salt = b64_decode_bytes(str(metadata["salt_b64"]))
+        fixed_nonce_salt = b64_decode_bytes(str(metadata["nonce_salt_b64"]))
+        shared_secret_override = _shared_secret_for_metadata(metadata, recipient_private_key_pem)
+
         perturbed = image.copy()
         perturbed[0, 0, 0] = np.uint8((int(perturbed[0, 0, 0]) + 1) % 256)
 
@@ -352,8 +385,11 @@ def _evaluate_one(
             mode=mode,
             passphrase=passphrase,
             recipient_public_key_pem=recipient_public_key_pem,
-            threat_level=threat_level,
+            threat_level=str(metadata.get("threat_level", threat_level)),
             forced_profile=forced_profile,
+            fixed_salt=fixed_salt,
+            fixed_nonce_salt=fixed_nonce_salt,
+            shared_secret_override=shared_secret_override,
         )
         chosen_plaintext_metrics["chosen_plaintext_encrypt_time_ms"] = round((time.perf_counter() - t1) * 1000.0, 6)
         npcr_val, uaci_val = _cipher_npcr_uaci_bytes(ciphertext, cipher_perturbed)
@@ -591,7 +627,7 @@ def run(
     }
 
     # Persist results.
-    (eval_dir / "batch_results.json").write_text(json.dumps(results, indent=2), encoding="utf-8")
+    (eval_dir / "batch_results.json").write_text(dumps_strict_json(results, indent=2), encoding="utf-8")
     df = pd.json_normalize(evaluated, sep="__")
     df.to_csv(eval_dir / "batch_results.csv", index=False)
 
@@ -603,7 +639,7 @@ def run(
             results["report"] = {"html": str(html_path)}
         except Exception as exc:  # noqa: BLE001
             results["report_error"] = str(exc)
-        (eval_dir / "batch_results.json").write_text(json.dumps(results, indent=2), encoding="utf-8")
+        (eval_dir / "batch_results.json").write_text(dumps_strict_json(results, indent=2), encoding="utf-8")
 
     return results
 
